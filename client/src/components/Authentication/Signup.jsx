@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { baseUrl, headers } from "../../Globals";
 
-const Signup = () => {
+const Signup = ({ loginUser }) => {
   const initialFormValues = {
     firstname: "",
     lastname: "",
@@ -23,10 +23,10 @@ const Signup = () => {
     
     const strongParams = {
       user: {
-        first_name: initialFormValues.firstname,
-        last_name: initialFormValues.lastname,
-        username: initialFormValues.username,
-        password: initialFormValues.password
+        first_name: values.firstname,
+        last_name: values.lastname,
+        username: values.username,
+        password: values.password
       }
     }
 
@@ -35,6 +35,11 @@ const Signup = () => {
       headers,
       body: JSON.stringify(strongParams)
     })
+      .then(resp => resp.json())
+      .then(data => {
+        loginUser(data.user);
+        localStorage.setItem('jwt', data.token)
+      })
   }
 
   return (
@@ -71,7 +76,7 @@ const Signup = () => {
             <input
               type="text"
               name="username"
-              placeholder="Username (must be unique)"
+              placeholder="Username"
               value={values.username}
               id="username"
               onChange={handleInputChange}
