@@ -41,11 +41,16 @@ const App = () => {
 
   return (
     <Router>
-      <NavBar loggedIn={loggedIn} logoutUser={ logoutUser } />
+      {/* {loggedIn ? <h1>Welcome back, { currentUser.first_name.toUpperCase() }</h1> : null } */}
+      <NavBar
+        loggedIn={loggedIn}
+        logoutUser={logoutUser}
+        currentUser={currentUser}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="signup" element={<Signup loginUser={ loginUser }/>} />
-        <Route path="login" element={<Login/>} />
+        <Route path="login" element={<Login loggedIn={ loggedIn } loginUser={ loginUser } currentUser={ currentUser }/>} />
       </Routes>
     </Router>
   );
