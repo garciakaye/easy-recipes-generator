@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 import Signup from './components/Authentication/Signup';
 import Login from './components/Authentication/Login';
-import Profile from "./Profile/Profile";
+import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
 
 const App = () => {
