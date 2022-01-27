@@ -8,11 +8,12 @@ const Home = () => {
         Homepage
       </Row>
       <Row>
-        <Col className="border" lg="3">
-          Pantry
-        </Col>
         <Col className="border">
           Recipes
+        </Col>
+        <Col className="border" lg="3">
+          My Pantry
+          {/* <Ingredients /> */}
         </Col>
       </Row>
     </Container>
