@@ -1,19 +1,21 @@
 import React from 'react';
+// import '../styles/home.css';
 import { Container, Row, Col } from "react-bootstrap";
+import IngredientsContainer from "../Ingredients/IngredientsContainer";
 
 const Home = () => {
   return (
-    <Container>
+    <Container className="home-container" >
       <Row>
         Homepage
       </Row>
       <Row>
-        <Col className="border">
+        <Col className="border rounded" xs={6}>
           Recipes
         </Col>
-        <Col className="border" lg="3">
+        <Col className="border rounded" >
           My Pantry
-          {/* <Ingredients /> */}
+          <IngredientsContainer />
         </Col>
       </Row>
     </Container>
