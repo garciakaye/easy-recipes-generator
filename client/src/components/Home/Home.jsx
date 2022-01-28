@@ -1,24 +1,33 @@
-import React from 'react';
-// import '../styles/home.css';
+import React, { useState, useEffect } from 'react';
+import '../../styles/home.css';
+import { baseUrl } from "../../Globals";
 import { Container, Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 
 const Home = () => {
+  const [ingredients, setIngredients] = useState([]);
+
+  useEffect(() => {
+    fetch(baseUrl + '/ingredients')
+    .then((r) => r.json())
+    .then((ingredient) => setIngredients(ingredient))
+  }, [])
+
+
+
   return (
-    <Container className="home-container" >
-      <Row>
+    <div className="home-container"  >
         Homepage
-      </Row>
       <Row>
-        <Col className="border rounded" xs={6}>
+        <Col className="border" xs={8}>
           Recipes
         </Col>
-        <Col className="border rounded" >
+        <Col className="border" xs={4}>
           My Pantry
-          <IngredientsContainer />
+          <IngredientsContainer ingredients={ ingredients } />
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 
