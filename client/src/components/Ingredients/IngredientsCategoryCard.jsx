@@ -17,13 +17,13 @@ const IngredientsCategoryCard = ({ name, ingredients}) => {
     <Card border="light">
       <Card.Header>{ name }</Card.Header>
       <Card.Body>
+        <Card.Text className="ingred-span">
         {ingredients.map((ingredient, index) => {
-          return <span className="ingredients-btns" key={ index }>
-            <button>
+          return <button className="ingredients-btns" key={ index }>
               {ingredient.name}
-              </button>
-          </span>
+          </button>
         })}
+          </Card.Text>
       </Card.Body>
   </Card>
   );
