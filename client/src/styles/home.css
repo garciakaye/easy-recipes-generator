@@ -25,8 +25,20 @@
 }
 
 .ingredients-btns {
-  justify-content: space-evenly;
-  padding-left: 1em;
-  padding-bottom: 1em;
-  
+  /* justify-content: space-evenly; */
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 15px;
+  text-decoration: none;
+}
+
+.ingred-span{
+  text-align: center;
+}
+
+.card {
+  margin-bottom: 20px;
 }
