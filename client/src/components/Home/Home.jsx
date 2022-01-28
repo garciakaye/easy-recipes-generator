@@ -19,10 +19,10 @@ const Home = () => {
     <div className="home-container"  >
         Homepage
       <Row>
-        <Col className="border" xs={8}>
+        <Col className="border" xs={9}>
           Recipes
         </Col>
-        <Col className="border" xs={4}>
+        <Col className="border" xs={3}>
           My Pantry
           <IngredientsContainer ingredients={ ingredients } />
         </Col>
