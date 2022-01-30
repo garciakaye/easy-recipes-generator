@@ -1,29 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card'
 
-const IngredientsCategoryCard = ({ name, ingredients}) => {
+const IngredientsCategoryCard = ({ name, ingredients }) => {
+  const [showMore, setShowMore] = useState(false);
   
-  // const renderIngredients = ingredients.map((ingredient) => {
-  //   return (
-  //     <span key={ingredient.id}>
-  //       <a href="#">
-  //         {ingredient.name}
-  //       </a>
-  //     </span>
-  //   )
-  // })
+const renderIngredients = ingredients.map((ingredient, index) => {
+  return <a href="#" className="ingredients-btns" key={ index }>
+      {ingredient.name}
+  </a>
+})
 
+  const someIngred = renderIngredients.splice(11)
+  
+  
   return (
     <Card border="light">
       <Card.Header>{ name }</Card.Header>
       <Card.Body>
         <Card.Text className="ingred-span">
-        {ingredients.map((ingredient, index) => {
-          return <button className="ingredients-btns" key={ index }>
-              {ingredient.name}
+          {showMore ? someIngred : renderIngredients}
+          <button onClick={() => setShowMore(!showMore)}>
+            {showMore ? "Show less" : "Show more"}
           </button>
-        })}
-          </Card.Text>
+        </Card.Text>
       </Card.Body>
   </Card>
   );
