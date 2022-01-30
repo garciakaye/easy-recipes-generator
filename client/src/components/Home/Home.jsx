@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/home.css';
 import { baseUrl } from "../../Globals";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 
 const Home = () => {
