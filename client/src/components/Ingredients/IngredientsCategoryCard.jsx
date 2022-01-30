@@ -1,16 +1,23 @@
 import React, { useState } from 'react';
-import Card from 'react-bootstrap/Card'
+import Card from 'react-bootstrap/Card';
+import { baseUrl, headers } from "../../Globals";
 
 const IngredientsCategoryCard = ({ name, ingredients }) => {
   const [showMore, setShowMore] = useState(false);
+  const [saveUserIngred, setSaveUserIngred] = useState({});
+
+  const handleSaveUserIngred = () => {
+
+  }
   
-const renderIngredients = ingredients.map((ingredient, index) => {
-  return <a href="#" className="ingredients-btns" key={ index }>
-      {ingredient.name}
-  </a>
-})
+  const renderIngredients = ingredients.map((ingredient, index) => {
+    return <a href="#" className="ingredients-btns" key={ index }>
+        {ingredient.name}
+    </a>
+  })
 
   const someIngred = renderIngredients.splice(11)
+  
   
   
   return (
