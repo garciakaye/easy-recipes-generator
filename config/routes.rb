@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :user_ingredients
+  resources :user_ingredients 
   resources :ingredients
-  resources :users
+  resources :users do
+    resources :user_ingredients
+  end
+  end
 
 
   get "/get-current-user" => "sessions#get_current_user"
