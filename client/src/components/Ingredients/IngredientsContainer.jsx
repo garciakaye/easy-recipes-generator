@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import IngredientsCategoryCard from "./IngredientsCategoryCard";
 
 const IngredientsContainer = ({ ingredients }) => {
+  // const [userIngredients, setUserIngredients] = useState(false);
+
 
 
   const categories = [...new Set(ingredients.map(ingredient => ingredient.category))]
@@ -9,7 +11,12 @@ const IngredientsContainer = ({ ingredients }) => {
 
   const renderCategoryCards = categories.map( category => {
     const categoryIngredients = ingredients.filter(ingredient => ingredient.category === category)
-    return <IngredientsCategoryCard key={category} name={category} ingredients={categoryIngredients} />
+    return <IngredientsCategoryCard
+      key={category}
+      name={category}
+      ingredients={categoryIngredients}
+      
+    />
   })
 
   

@@ -5,18 +5,9 @@ import Ingredient from "./Ingredient";
 
 const IngredientsCategoryCard = ({ name, ingredients }) => {
   const [showMore, setShowMore] = useState(false);
-  const [userIngredients, setUserIngredients] = useState({});
-
-  const handleSaveUserIngred = (event) => {
-    
-
-  }
+  
   
   const renderIngredients = ingredients.map((ingredient, index) => <Ingredient key={ index } ingredient={ ingredient } />)
-
-  // <a href="#" className="ingredients-btns" key={ index }>
-  //       {ingredient.name}
-  //   </a>
 
   const someIngred = renderIngredients.splice(11)
   
