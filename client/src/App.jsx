@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
-import Signup from './components/Authentication/Signup';
-import Login from './components/Authentication/Login';
+import Signup from './components/User/Signup';
+import Login from './components/User/Login';
 import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
 
@@ -17,7 +17,7 @@ const App = () => {
     setLoggedIn(user);
   }
 
-  function logoutUser(){
+  function logoutUser() {
     setCurrentUser({});
     setLoggedIn(false);
     localStorage.removeItem('jwt');
@@ -34,11 +34,11 @@ const App = () => {
 
         }
       })
-      .then(resp => resp.json())
-      .then(user => loginUser(user))
-    // setLoggedIn(true);
-  }
-}, [loggedIn])
+        .then(resp => resp.json())
+        .then(user => loginUser(user))
+      // setLoggedIn(true);
+    }
+  }, [loggedIn])
 
   return (
     <Router>
