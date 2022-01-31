@@ -5,20 +5,21 @@ class UserIngredientsController < ApplicationController
   def index
     @user_ingredients = UserIngredient.all
 
-    render json: @user_ingredients
+    render json: @user_ingredients, include: :ingredients
   end
 
   # GET /user_ingredients/1
   def show
-    render json: @user_ingredient
+    render json: @user_ingredient, include: :ingredients
   end
+  
 
   # POST /user_ingredients
   def create
     @user_ingredient = UserIngredient.new(user_ingredient_params)
 
     if @user_ingredient.save
-      render json: @user_ingredient, status: :created, location: @user_ingredient
+      render json: @user_ingredient, status: :created
     else
       render json: @user_ingredient.errors, status: :unprocessable_entity
     end
@@ -45,7 +46,11 @@ class UserIngredientsController < ApplicationController
     end
 
     # Only allow a list of trusted parameters through.
+    # def user_ingredient_params
+    #   params.require(:user_ingredient).permit(:user_id, :ingredient_id)
+    # end
+
     def user_ingredient_params
-      params.require(:user_ingredient).permit(:user_id, :ingredient_id)
+      params.permit(:user_id, :ingredient_id)
     end
 end
