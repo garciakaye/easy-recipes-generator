@@ -2,6 +2,12 @@ puts "Seeding DB..."
 
 
 Ingredient.destroy_all
+UserIngredient.destroy_all
+
+
+
+
+
 
 condiments = [
   "aji amarillo",
@@ -2069,5 +2075,7 @@ oils = [
 oils.each do |oil|
   Ingredient.create(name: oil, category: "Oils & Fats")
 end
+
+userIngred = UserIngredient.create({user_id: 11, ingredient_id: Ingredient.first.id})
 
 puts "done seeding"
