@@ -3,14 +3,7 @@ import { Link } from 'react-router-dom';
 import { GiMeal } from "react-icons/gi";
 import { CgProfile } from "react-icons/cg";
 
-const NavBar = ({ loggedIn, logoutUser, currentUser }) => {
-
-
-  const handleLogout = (event) => {
-    event.preventDefault();
-    logoutUser()
-  }
-
+const NavBar = ({ logOut, loggedIn, user }) => {
   
   return (
     <div id="navbar">
@@ -19,10 +12,10 @@ const NavBar = ({ loggedIn, logoutUser, currentUser }) => {
         <nav>
           <Link to="/"><GiMeal /></Link>
           <Link to="/">Easy Recipes Generator</Link>
-          <a href="#home" onClick={ handleLogout }>Logout</a>
+          <a href="#home" onClick={ logOut }>Logout</a>
         </nav>
         <nav>
-            <Link to="/profile"><CgProfile />{ currentUser.first_name }</Link>
+            <Link to="/profile"><CgProfile />{ user.first_name }</Link>
         </nav>
         </>) : (
         <>

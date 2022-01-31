@@ -1,40 +1,54 @@
 import React, { useState, useEffect } from 'react';
 import { baseUrl, headers } from "../../Globals";
 import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
+import { logInFetch } from "./userSlice";
 
-const Login = ({ loginUser, loggedIn, currentUser }) => {
-  const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
-	const navigate = useNavigate();
+const Login = () => {
+  const loggedIn = useSelector(state => state.user.loggedIn)
+	
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+
+  const [formData, setFormData] = useState({
+    username: '',
+    password: ''
+  })
 
 	useEffect(() => {
 		if( loggedIn ) {
 			navigate("/")
 		}
-	}, [loggedIn, navigate])
+  }, [loggedIn, navigate])
+  
+  const handleChange = (e) => {
+    e.preventDefault();
+    setFormData({...formData, [e.target.name]: e.target.value})
+  }
 
 	
 
-function handleSubmit(e){
-	e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-	const strongParams = {
-		username,
-		password	
-	}
+    const strongParams = {
+      ...formData
+    }
+    dispatch(logInFetch(strongParams))
+  }
 
-	fetch(baseUrl + '/login', {
-		method: "POST",
-		headers,
-		body: JSON.stringify(strongParams)
-	})
-		.then(resp => resp.json())
-		.then(data => {
-			//login user
-			loginUser(data.user);
-			localStorage.setItem('jwt', data.token)
-		})
-}
+// 	fetch(baseUrl + '/login', {
+// 		method: "POST",
+// 		headers,
+// 		body: JSON.stringify(strongParams)
+// 	})
+// 		.then(resp => resp.json())
+// 		.then(data => {
+// 			//login user
+// 			loginUser(data.user);
+// 			localStorage.setItem('jwt', data.token)
+// 		})
+// }
   
   return (
     <div className="login-form">
@@ -42,16 +56,15 @@ function handleSubmit(e){
         id="login"
         onSubmit={handleSubmit}
       >
-        <h1>{ currentUser.first_name }</h1>
+        <h1>{  }</h1>
         <div>
           <label htmlFor="username"></label>
             <input
               type="text"
               name="username"
               placeholder="Username"
-              value={username}
-              id="username"
-              onChange={ e => setUsername(e.target.value) }
+              value={formData.username}
+              onChange={ handleChange }
             />
         </div>
         <div>
@@ -60,9 +73,8 @@ function handleSubmit(e){
               type="password"
               name="password"
               placeholder="Password"
-              value={password}
-              id="password"
-              onChange={ e => setPassword(e.target.value) }
+              value={formData.password}
+              onChange={ handleChange }
             />
         </div>
         <button

@@ -1,5 +1,5 @@
 import './styles/App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
@@ -7,19 +7,24 @@ import Signup from './components/User/Signup';
 import Login from './components/User/Login';
 import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
+import { useSelector, useDispatch } from 'react-redux';
+// import { userLoggedIn, userLogout } from "../component/User/userSlice";
+import { userLoggedIn, userLogout } from "./components/User/userSlice";
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [currentUser, setCurrentUser] = useState({});
+  // const [loggedIn, setLoggedIn] = useState(false);
+  const loggedIn = useSelector(state => state.user.loggedIn)
+  const user = useSelector(state => state.user.entities[0])
+  const dispatch = useDispatch()
 
-  const loginUser = user => {
-    setCurrentUser(user);
-    setLoggedIn(user);
-  }
+  // const loginUser = user => {
+  //   setCurrentUser(user);
+  //   setLoggedIn(user);
+  // }
 
-  function logoutUser() {
-    setCurrentUser({});
-    setLoggedIn(false);
+  const logOut = () => {
+    dispatch(userLogout(user.id));
     localStorage.removeItem('jwt');
   }
 
@@ -35,43 +40,41 @@ const App = () => {
         }
       })
         .then(resp => resp.json())
-        .then(user => loginUser(user))
-      // setLoggedIn(true);
+        .then(user => dispatch(userLoggedIn(user)))
     }
-  }, [loggedIn])
+  }, [loggedIn, dispatch])
+
 
   return (
     <Router>
       <NavBar
-        loggedIn={loggedIn}
-        logoutUser={logoutUser}
-        currentUser={currentUser}
+        loggedIn={ loggedIn }
+        logOut={ logOut }
+        user={ user }
       />
       <Routes>
         <Route
           path="/"
-          element={<Home />}
+          element={ <Home
+            loggedIn={ loggedIn }
+          />
+          }
         />
         <Route
           path="/signup"
-          element={<Signup
-            loginUser={loginUser}
-          />}
+          element={<Signup/>
+          }
         />
         <Route
           path="/login"
           element={<Login
             loggedIn={loggedIn}
-            loginUser={loginUser}
-            currentUser={currentUser}
           />}
         />
         <Route
           path="/profile"
           element={<Profile
             loggedIn={loggedIn}
-            loginUser={loginUser}
-            currentUser={currentUser}
           />}
         />
       </Routes>

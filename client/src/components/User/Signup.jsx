@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { baseUrl, headers } from "../../Globals";
+// import { useDispatch, useSelector } from "react-redux";
+import { userLoggedIn } from "./userSlice";
 
-const Signup = ({ loginUser }) => {
+const Signup = () => {
+  // const dispatch = useDispatch()
+
   const initialFormValues = {
     firstname: "",
     lastname: "",
@@ -37,7 +41,7 @@ const Signup = ({ loginUser }) => {
     })
       .then(resp => resp.json())
       .then(data => {
-        loginUser(data.user);
+        userLoggedIn(data.user);
         localStorage.setItem('jwt', data.token)
       })
   }
