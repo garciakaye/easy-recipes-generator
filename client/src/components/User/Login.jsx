@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { baseUrl, headers } from "../../Globals";
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logInFetch } from "./userSlice";
@@ -26,8 +25,6 @@ const Login = () => {
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
-	
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -37,18 +34,7 @@ const Login = () => {
     dispatch(logInFetch(strongParams))
   }
 
-// 	fetch(baseUrl + '/login', {
-// 		method: "POST",
-// 		headers,
-// 		body: JSON.stringify(strongParams)
-// 	})
-// 		.then(resp => resp.json())
-// 		.then(data => {
-// 			//login user
-// 			loginUser(data.user);
-// 			localStorage.setItem('jwt', data.token)
-// 		})
-// }
+  // if not logged in, redirect user to the about page
   
   return (
     <div className="login-form">

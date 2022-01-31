@@ -8,20 +8,12 @@ import Login from './components/User/Login';
 import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from 'react-redux';
-// import { userLoggedIn, userLogout } from "../component/User/userSlice";
 import { userLoggedIn, userLogout } from "./components/User/userSlice";
 
 const App = () => {
-  // const [currentUser, setCurrentUser] = useState({});
-  // const [loggedIn, setLoggedIn] = useState(false);
   const loggedIn = useSelector(state => state.user.loggedIn)
   const user = useSelector(state => state.user.entities[0])
   const dispatch = useDispatch()
-
-  // const loginUser = user => {
-  //   setCurrentUser(user);
-  //   setLoggedIn(user);
-  // }
 
   const logOut = () => {
     dispatch(userLogout(user.id));
@@ -62,20 +54,23 @@ const App = () => {
         />
         <Route
           path="/signup"
-          element={<Signup/>
+          element={<Signup
+          />
           }
         />
         <Route
           path="/login"
-          element={<Login
+          element={ <Login
             loggedIn={loggedIn}
-          />}
+          />
+          }
         />
         <Route
           path="/profile"
-          element={<Profile
+          element={ <Profile
             loggedIn={loggedIn}
-          />}
+          />
+          }
         />
       </Routes>
     </Router>
