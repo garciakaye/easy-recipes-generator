@@ -1,9 +1,9 @@
 import { createAyncThunk, createSlice } from "@reduxjs/toolkit";
 import { baseUrl, headers } from "../../Globals";
 
-const fetchUserIngredients = createAyncThunk(
-  
-)
+// const fetchUserIngredients = createAyncThunk(
+
+// )
 
 const userIngredientsSlice = createSlice({
   name: "userIngredients",
