@@ -21,7 +21,6 @@ const Login = () => {
   }, [loggedIn, navigate])
   
   const handleChange = (e) => {
-    e.preventDefault();
     setFormData({...formData, [e.target.name]: e.target.value})
   }
 
