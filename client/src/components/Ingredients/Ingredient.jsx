@@ -1,17 +1,22 @@
 import React, { useState } from 'react';
-// import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { userIngredientAdd, userIngredientsPost } from "./userIngredientsSlice";
 
-const Ingredient = ({ingredient}) => {
-  // const userIngredients = useSelector((state) => state.userIngredients.entities)
-  const [userIngredients, setUserIngredients] = useState(false);
-  
+const Ingredient = ({ ingredient }) => {
+  const user = useSelector((state) => state.user.entities[0])
+  const dispatch = useDispatch();
+
+
   const handleAddUserIngredients = () => {
-    // fetch to user_ingredient POST
-
+    const userIngredient = {
+      user_id: user.id,
+      ingredient_id: ingredient.id
+    }
+    dispatch(userIngredientsPost(userIngredient))
   }
   
   return (
-  <a href="#" className="ingredients-btns" > 
+  <a href="#" className="ingredients-btns" onClick={ handleAddUserIngredients} > 
     {ingredient.name}
   </a>
     
