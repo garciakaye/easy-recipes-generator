@@ -5,12 +5,12 @@ class UserIngredientsController < ApplicationController
   def index
     @user_ingredients = UserIngredient.all
 
-    render json: @user_ingredients, include: :ingredients
+    render json: @user_ingredients, include: :ingredient
   end
 
   # GET /user_ingredients/1
   def show
-    render json: @user_ingredient, include: :ingredients
+    render json: @user_ingredient, include: :ingredient
   end
   
 
