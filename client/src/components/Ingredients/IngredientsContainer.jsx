@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import IngredientsCategoryCard from "./IngredientsCategoryCard";
 
 const IngredientsContainer = ({ ingredients }) => {
-  // const [userIngredients, setUserIngredients] = useState(false);
-
-
 
   const categories = [...new Set(ingredients.map(ingredient => ingredient.category))]
 
@@ -15,11 +12,9 @@ const IngredientsContainer = ({ ingredients }) => {
       key={category}
       name={category}
       ingredients={categoryIngredients}
-      
     />
   })
 
-  
 
   return (
     <div>
