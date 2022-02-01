@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { baseUrl, headers } from "../../Globals";
+import { userIngredientAdd } from "../Ingredients/userIngredientsSlice";
 
 export function logInFetch(strongParams) {
   return function (dispatch) {
@@ -15,6 +16,7 @@ export function logInFetch(strongParams) {
         res.json()
         .then(data => {
           dispatch(userLoggedIn(data.user));
+          dispatch(userIngredientAdd(data.user.user_ingredients))
           localStorage.setItem('jwt', data.token)
         })
       }else{
@@ -40,6 +42,7 @@ const userSlice = createSlice({
     },
     userLoggedIn(state, action) {
       state.entities.push({
+        id: action.payload.id,
         first_name: action.payload.first_name,
         last_name: action.payload.last_name,
         username: action.payload.username,
