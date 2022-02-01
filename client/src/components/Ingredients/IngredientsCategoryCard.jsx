@@ -12,7 +12,6 @@ const IngredientsCategoryCard = ({ name, ingredients }) => {
   const someIngred = renderIngredients.splice(11)
   
   
-  
   return (
     <Card border="light">
       <Card.Header>{ name }</Card.Header>
