@@ -15,6 +15,7 @@ const App = () => {
   const user = useSelector(state => state.user.entities[0])
   const dispatch = useDispatch()
 
+
   const logOut = () => {
     dispatch(userLogout(user.id));
     localStorage.removeItem('jwt');
