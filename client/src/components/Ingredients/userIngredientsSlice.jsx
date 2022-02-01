@@ -1,27 +1,41 @@
-import { createAyncThunk, createSlice } from "@reduxjs/toolkit";
+import {  createSlice } from "@reduxjs/toolkit";
 import { baseUrl, headers } from "../../Globals";
 
-// const fetchUserIngredients = createAyncThunk(
-
-// )
+export function userIngredientsPost(strongParams) {
+  return function (dispatch) {
+    dispatch({ type: "userIngredients/userIngredientsLoading" });
+    fetch(baseUrl + "/user_ingredients", {
+      method: "POST",
+      headers,
+      body: JSON.stringify(strongParams)
+    })
+      .then(res => res.json())
+      .then(data => console.log(userIngredientAdd(data)))
+  }
+}
 
 const userIngredientsSlice = createSlice({
   name: "userIngredients",
   initialState: {
     entities: [],
+    status: 'idle',
   },
   reducers: {
-    userIngredientAdded(state, action) {
-      state.entities.push({ ...action.payload });
+    userIngredientAdd(state, action) {
+      state.entities.push({
+        user_id: action.payload.user_id,
+        ingredient_id: action.payload.ingredient_id,
+        ingredient: action.payload.ingredient
+      });
     },
-    userIngredientRemoved(state, action) {
+    userIngredientRemove(state, action) {
       const index = state.entities.findIndex((r) => r.id === action.payload);
       state.entities.splice(index, 1);
     },
   },
 });
 
-export const { userIngredientAdded, userIngredientRemoved } = userIngredientsSlice.actions;
+export const { userIngredientAdd, userIngredientRemove } = userIngredientsSlice.actions;
 
 export default userIngredientsSlice.reducer;
 
