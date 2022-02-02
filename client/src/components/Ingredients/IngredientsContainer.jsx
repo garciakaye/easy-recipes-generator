@@ -6,7 +6,7 @@ const IngredientsContainer = ({ ingredients }) => {
   const categories = [...new Set(ingredients.map(ingredient => ingredient.category))]
 
 
-  const renderCategoryCards = categories.map( category => {
+  const renderCategoryCards = categories.map(category => {
     const categoryIngredients = ingredients.filter(ingredient => ingredient.category === category)
     return <IngredientsCategoryCard
       key={category}
@@ -18,7 +18,7 @@ const IngredientsContainer = ({ ingredients }) => {
 
   return (
     <div>
-      { renderCategoryCards }
+      {renderCategoryCards}
     </div>
   );
 }
