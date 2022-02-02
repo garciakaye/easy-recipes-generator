@@ -1,32 +1,31 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { baseUrl, headers } from "../../Globals";
-import { userIngredientAdd } from "../Ingredients/userIngredientsSlice";
+import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
 
 export function logInFetch(strongParams) {
   return function (dispatch) {
-    
-    dispatch({ type: "users/userLoginLoading"});
+
+    dispatch({ type: "users/userLoginLoading" });
     fetch(baseUrl + '/login', {
       method: "POST",
       headers,
       body: JSON.stringify(strongParams)
     })
-    .then(res => {
-      if(res.ok) {
-        res.json()
-        .then(data => {
-          dispatch(userLoggedIn(data.user));
-          dispatch(userIngredientAdd(data.user.user_ingredients))
-          localStorage.setItem('jwt', data.token)
-        })
-      }else{
-        res.json().then(errors => dispatch(setErrors(errors)))
-      }
-    })
+      .then(res => {
+        if (res.ok) {
+          res.json()
+            .then(data => {
+              dispatch(userLoggedIn(data.user));
+              dispatch(userIngredientsGet(data.user_ingredients))
+              localStorage.setItem('jwt', data.token)
+            })
+        } else {
+          res.json().then(errors => dispatch(setErrors(errors)))
+        }
+      })
   }
 }
 
-  
 
 const userSlice = createSlice({
   name: 'user',
@@ -54,7 +53,7 @@ const userSlice = createSlice({
     },
     userLogout(state, action) {
       state.loggedIn = false
-      state.entities = state.entities.filter( user => user.id !== action.payload)
+      state.entities = state.entities.filter(user => user.id !== action.payload)
     },
     setErrors(state, action) {
       state.errors = action.payload
