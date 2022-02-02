@@ -9,6 +9,7 @@ import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from 'react-redux';
 import { userLoggedIn, userLogout } from "./components/User/userSlice";
+import { userIngredientsGet } from "./components/Ingredients/userIngredientsSlice";
 
 const App = () => {
   const loggedIn = useSelector(state => state.user.loggedIn)
@@ -33,7 +34,11 @@ const App = () => {
         }
       })
         .then(resp => resp.json())
-        .then(user => dispatch(userLoggedIn(user)))
+        .then(user => {
+          dispatch(userLoggedIn(user))
+          dispatch(userIngredientsGet(user.user_ingredients))
+        })
+
     }
   }, [loggedIn, dispatch])
 
@@ -41,15 +46,15 @@ const App = () => {
   return (
     <Router>
       <NavBar
-        loggedIn={ loggedIn }
-        logOut={ logOut }
-        user={ user }
+        loggedIn={loggedIn}
+        logOut={logOut}
+        user={user}
       />
       <Routes>
         <Route
           path="/"
-          element={ <Home
-            loggedIn={ loggedIn }
+          element={<Home
+            loggedIn={loggedIn}
           />
           }
         />
@@ -61,14 +66,14 @@ const App = () => {
         />
         <Route
           path="/login"
-          element={ <Login
+          element={<Login
             loggedIn={loggedIn}
           />
           }
         />
         <Route
           path="/profile"
-          element={ <Profile
+          element={<Profile
             loggedIn={loggedIn}
           />
           }
