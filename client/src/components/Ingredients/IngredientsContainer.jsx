@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import IngredientsCategoryCard from "./IngredientsCategoryCard";
 
 const IngredientsContainer = ({ ingredients }) => {
