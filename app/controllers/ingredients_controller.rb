@@ -3,7 +3,7 @@ class IngredientsController < ApplicationController
 
   # GET /ingredients
   def index
-    @ingredients = Ingredient.all.order(category: :desc, name: :asc)
+    @ingredients = Ingredient.order(category: :desc, name: :asc)
 
     render json: @ingredients
   end
