@@ -10,6 +10,7 @@ import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from 'react-redux';
 import { userLoggedIn, userLogout } from "./components/User/userSlice";
 import { userIngredientsGet } from "./components/Ingredients/userIngredientsSlice";
+import About from "./components/About/About";
 
 const App = () => {
   const loggedIn = useSelector(state => state.user.loggedIn)
@@ -17,9 +18,11 @@ const App = () => {
   const dispatch = useDispatch()
 
 
+
   const logOut = () => {
     dispatch(userLogout(user.id));
     localStorage.removeItem('jwt');
+
   }
 
   useEffect(() => {
@@ -52,9 +55,26 @@ const App = () => {
       />
       <Routes>
         <Route
-          path="/"
+          path='/home'
           element={<Home
             loggedIn={loggedIn}
+            logOut={logOut}
+            user={user}
+          />
+          }
+        />
+        <Route
+          path="/"
+          element={<About
+          />
+          }
+        />
+        <Route
+          path="/profile"
+          element={<Profile
+            loggedIn={loggedIn}
+            logOut={logOut}
+            user={user}
           />
           }
         />
@@ -67,13 +87,6 @@ const App = () => {
         <Route
           path="/login"
           element={<Login
-            loggedIn={loggedIn}
-          />
-          }
-        />
-        <Route
-          path="/profile"
-          element={<Profile
             loggedIn={loggedIn}
           />
           }
