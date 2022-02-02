@@ -37,6 +37,19 @@
   color: rgb(167, 170, 170);
 }
 
+.ingredients-btns-active {
+  /* justify-content: space-evenly; */
+  display: inline-block;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 15px;
+  text-decoration: none;
+  background-color: rgb(222, 231, 228);
+  color: rgb(167, 170, 170);
+}
 .ingred-span{
   text-align: center;
 }
