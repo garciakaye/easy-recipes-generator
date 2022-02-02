@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { userIngredientsPost, userIngredientsDelete } from "./userIngredientsSlice";
 
@@ -10,7 +10,7 @@ const Ingredient = ({ ingredient }) => {
 
 
 
-  const findUserIngredient = userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id)
+  // const findUserIngredient = userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id)
 
 
   const handleUserIngredientAdd = () => {
@@ -20,6 +20,8 @@ const Ingredient = ({ ingredient }) => {
     }
     dispatch(userIngredientsPost(userIngredient))
   }
+
+  const findUserIngredient = userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id)
 
   const handleUserIngredientRemove = () => {
     dispatch(userIngredientsDelete(findUserIngredient.id))

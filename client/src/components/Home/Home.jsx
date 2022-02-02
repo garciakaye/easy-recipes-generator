@@ -7,24 +7,26 @@ import IngredientsContainer from "../Ingredients/IngredientsContainer";
 const Home = () => {
   const [ingredients, setIngredients] = useState([]);
 
+
   useEffect(() => {
     fetch(baseUrl + '/ingredients')
-    .then((r) => r.json())
-    .then((ingredient) => setIngredients(ingredient))
+      .then((r) => r.json())
+      .then((ingredient) => setIngredients(ingredient))
   }, [])
 
 
 
   return (
     <div className="home-container"  >
-        Homepage
+      Homepage
       <Row>
         <Col className="border" xs={9}>
           Recipes
         </Col>
         <Col className="border" xs={3}>
           My Pantry
-          <IngredientsContainer ingredients={ ingredients } />
+          {/* {ingredients && <IngredientsContainer ingredients={ingredients} />} */}
+          <IngredientsContainer ingredients={ingredients} />
         </Col>
       </Row>
     </div>

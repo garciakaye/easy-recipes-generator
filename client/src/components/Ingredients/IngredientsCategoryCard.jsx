@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Ingredient from "./Ingredient";
-import { useSelector, useDispatch } from "react-redux";
+
 
 const IngredientsCategoryCard = ({ name, ingredients }) => {
   const [showMore, setShowMore] = useState(false);
-  const user = useSelector((state) => state.user.entities[0])
-  const dispatch = useDispatch();
 
   const renderIngredients = ingredients.map((ingredient, index) => <Ingredient key={index} ingredient={ingredient} />)
 
