@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { baseUrl, headers } from "../../Globals";
-// import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userLoggedIn } from "./userSlice";
+import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
 
 const Signup = () => {
-  // const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const initialFormValues = {
     firstname: "",
@@ -12,7 +13,7 @@ const Signup = () => {
     username: "",
     password: "",
   };
-  
+
   const [values, setValues] = useState(initialFormValues)
 
   const handleInputChange = (event) => {
@@ -24,7 +25,7 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
+
     const strongParams = {
       user: {
         first_name: values.firstname,
@@ -42,6 +43,7 @@ const Signup = () => {
       .then(resp => resp.json())
       .then(data => {
         userLoggedIn(data.user);
+        dispatch(userIngredientsGet(data.user_ingredients))
         localStorage.setItem('jwt', data.token)
       })
   }
@@ -55,47 +57,47 @@ const Signup = () => {
         <h1>Create An Account</h1>
         <div>
           <label htmlFor="firstname"></label>
-            <input
-              type="text"
-              name="firstname"
-              placeholder="First Name"
-              value={values.firstname}
-              id="firstname"
-              onChange={handleInputChange}
-            />
+          <input
+            type="text"
+            name="firstname"
+            placeholder="First Name"
+            value={values.firstname}
+            id="firstname"
+            onChange={handleInputChange}
+          />
         </div>
         <div>
           <label htmlFor="lastname"></label>
-            <input
-              type="text"
-              name="lastname"
-              placeholder="Last Name"
-              value={values.lastname}
-              id="lastname"
-              onChange={handleInputChange}
-            />
+          <input
+            type="text"
+            name="lastname"
+            placeholder="Last Name"
+            value={values.lastname}
+            id="lastname"
+            onChange={handleInputChange}
+          />
         </div>
         <div>
           <label htmlFor="username"></label>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              value={values.username}
-              id="username"
-              onChange={handleInputChange}
-            />
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={values.username}
+            id="username"
+            onChange={handleInputChange}
+          />
         </div>
         <div>
           <label htmlFor="password"></label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              value={values.password}
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={values.password}
             id="password"
             onChange={handleInputChange}
-            />
+          />
         </div>
         <button
           className="signup-btn"
