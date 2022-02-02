@@ -26,7 +26,6 @@ const Ingredient = ({ ingredient }) => {
   }
 
 
-
   return (
     <>
       {findUserIngredient ?
@@ -39,3 +38,5 @@ const Ingredient = ({ ingredient }) => {
 };
 
 export default Ingredient;
+
+

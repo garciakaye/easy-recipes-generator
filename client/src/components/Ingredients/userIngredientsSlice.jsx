@@ -42,7 +42,6 @@ const userIngredientsSlice = createSlice({
       state.entities = action.payload
     },
     userIngredientRemove(state, action) {
-      // debugger
       state.entities = state.entities.filter(ingred => ingred.id !== action.payload)
     },
   },
