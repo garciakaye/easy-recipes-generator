@@ -1,4 +1,4 @@
-import {  createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { baseUrl, headers } from "../../Globals";
 
 export function userIngredientsPost(strongParams) {
@@ -10,7 +10,17 @@ export function userIngredientsPost(strongParams) {
       body: JSON.stringify(strongParams)
     })
       .then(res => res.json())
-      .then(data => console.log(userIngredientAdd(data)))
+      .then(data => dispatch(userIngredientAdd(data)))
+  }
+}
+
+export function userIngredientsDelete(id) {
+  return function (dispatch) {
+    dispatch({ type: "userIngredients/userIngredientsRemoving" });
+    fetch(baseUrl + `/user_ingredients/${id}`, {
+      method: "DELETE",
+    })
+      .then(dispatch(userIngredientRemove(id)))
   }
 }
 
@@ -28,14 +38,16 @@ const userIngredientsSlice = createSlice({
         ingredient: action.payload.ingredient
       });
     },
+    userIngredientsGet(state, action) {
+      state.entities = action.payload
+    },
     userIngredientRemove(state, action) {
-      const index = state.entities.findIndex((r) => r.id === action.payload);
-      state.entities.splice(index, 1);
+      state.entities.filter(ingred => ingred.id !== action.payload)
     },
   },
 });
 
-export const { userIngredientAdd, userIngredientRemove } = userIngredientsSlice.actions;
+export const { userIngredientAdd, userIngredientRemove, userIngredientsGet } = userIngredientsSlice.actions;
 
 export default userIngredientsSlice.reducer;
 
