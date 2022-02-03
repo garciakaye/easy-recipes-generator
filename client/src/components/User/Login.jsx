@@ -2,18 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logInFetch } from "./userSlice";
-import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
+
+
 
 
 const Login = () => {
-
   const loggedIn = useSelector(state => state.user.loggedIn)
-  const userIngredients = useSelector((state) => state.userIngredients.entities)
-
-
 
   const navigate = useNavigate();
-  const dispatch = useDispatch()
+
+  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
     username: '',
@@ -37,10 +35,10 @@ const Login = () => {
       ...formData
     }
     dispatch(logInFetch(strongParams))
-    dispatch(userIngredientsGet(userIngredients))
+
   }
 
-  // if not logged in, redirect user to the about page
+
 
   return (
     <div className="login-form">
