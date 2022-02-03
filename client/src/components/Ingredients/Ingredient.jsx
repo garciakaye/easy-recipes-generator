@@ -5,12 +5,8 @@ import { userIngredientsPost, userIngredientsDelete } from "./userIngredientsSli
 const Ingredient = ({ ingredient }) => {
   const user = useSelector((state) => state.user.entities[0])
   const userIngredients = useSelector((state) => state.userIngredients.entities)
-
   const dispatch = useDispatch();
 
-
-
-  // const findUserIngredient = userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id)
 
 
   const handleUserIngredientAdd = () => {
@@ -22,6 +18,7 @@ const Ingredient = ({ ingredient }) => {
   }
 
   const findUserIngredient = userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id)
+
 
   const handleUserIngredientRemove = () => {
     dispatch(userIngredientsDelete(findUserIngredient.id))
