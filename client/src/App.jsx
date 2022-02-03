@@ -18,7 +18,6 @@ const App = () => {
   const dispatch = useDispatch()
 
 
-
   const logOut = () => {
     dispatch(userLogout(user.id));
     localStorage.removeItem('jwt');
@@ -39,7 +38,7 @@ const App = () => {
         .then(resp => resp.json())
         .then(user => {
           dispatch(userLoggedIn(user))
-          dispatch(userIngredientsGet(user.user_ingredients))
+          dispatch(userIngredientsGet(user.user_ingredients)) //this is undefined
         })
 
     }
