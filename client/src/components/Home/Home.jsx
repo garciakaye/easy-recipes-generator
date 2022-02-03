@@ -1,18 +1,17 @@
-import React, { useState, useEffect } from 'react';
+// import React, { useState, useEffect } from 'react';
 import '../../styles/home.css';
-import { baseUrl } from "../../Globals";
+// import { baseUrl } from "../../Globals";
 import { Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 
 const Home = () => {
-  const [ingredients, setIngredients] = useState([]);
+  // const [ingredients, setIngredients] = useState([]);
 
-
-  useEffect(() => {
-    fetch(baseUrl + '/ingredients')
-      .then((r) => r.json())
-      .then((ingredient) => setIngredients(ingredient))
-  }, [])
+  // useEffect(() => {
+  //   fetch(baseUrl + '/ingredients')
+  //     .then((r) => r.json())
+  //     .then((ingredient) => setIngredients(ingredient))
+  // }, [])
 
 
 
@@ -26,7 +25,7 @@ const Home = () => {
         <Col className="border" xs={3}>
           My Pantry
           {/* {ingredients && <IngredientsContainer ingredients={ingredients} />} */}
-          <IngredientsContainer ingredients={ingredients} />
+          <IngredientsContainer />
         </Col>
       </Row>
     </div>
