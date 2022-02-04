@@ -46,6 +46,7 @@ const userSlice = createSlice({
         last_name: action.payload.last_name,
         username: action.payload.username,
         password: action.payload.password,
+        user_ingredients: action.payload.user
       });
       state.status = "idle"
       state.loggedIn = true
