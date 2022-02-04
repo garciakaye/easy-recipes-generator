@@ -1129,7 +1129,7 @@ grains.each do |grain|
   Ingredient.create(name: grain, category: "Grains & Cereal")
 end
 
-alcohol = [
+liquor_and_wine = [
   "absinthe",
   "aloe liqueur",
   "amaretto",
@@ -1211,8 +1211,8 @@ alcohol = [
   "white wine",
   "zinfandel"
 ]
-alcohol.each do |alco|
-  Ingredient.create(name: alco, category: "Alcohol")
+liquor_and_wine.each do |alco|
+  Ingredient.create(name: alco, category: "Liquor & Wine")
 end
 
 breads = [
