@@ -1,27 +1,57 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
-.App {
+:root {
+	--deeppurple: #26264F;
+	--mywhite: #F6F5F7;
+}
+
+html, .App, #root {
   display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
+  background: rgba(45, 40, 97, 0.918);
 }
 
-/* .container {
+* {
+	box-sizing: border-box;
+	color: var(--deeppurple);
+}
+
+
+.container {
 	background: var(--mywhite);
   display: flex;
 	justify-content: center;
   flex-direction: column;
 	align-items: center;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Quicksand', sans-serif;
 	height: 100vh;
 	margin: 0px 20px 0px 20px;
-} */
+}
+
+h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+h2 {
+	text-align: center;
+}
+
+
+hr, vl {
+	border-top: 1px solid;
+	color: rgba(132, 152, 177, 0.228);
+	width: 70%;
+	text-align: center;
+}
+
 
 #navbar {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   background: var(--mywhite);
-  border-radius: 10px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.25);
+  /* border-radius: 10px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.25); */
   position: sticky;
   display: flex;
   align-items: center;
