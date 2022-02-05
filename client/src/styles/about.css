@@ -10,15 +10,16 @@
   background-size: cover;
 	align-items: center;
 	font-family: 'Quicksand', sans-serif;
-	height: 95vh;
+	height: 91vh;
   padding: 4px 12px 4px 12px;
+
 }
 
 .about {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: stretch;
+  /* align-items: stretch; */
 }
 
 .about-text {
