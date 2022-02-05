@@ -3,6 +3,8 @@ import { baseUrl, headers } from "../../Globals";
 import { useDispatch } from "react-redux";
 import { userLoggedIn } from "./userSlice";
 import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
+import FoodLogo from "../LottieFiles/FoodLogo";
+
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -49,12 +51,12 @@ const Signup = () => {
   }
 
   return (
-    <div className="signup-form">
+    <div className="signup-form signup-right">
       <form
         id="signup"
         onSubmit={handleSubmit}
       >
-        <h1>Create An Account</h1>
+        <h5>Create An Account</h5>
         <div>
           <label htmlFor="firstname"></label>
           <input
