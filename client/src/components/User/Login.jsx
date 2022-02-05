@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logInFetch } from "./userSlice";
-
+import Form from 'react-bootstrap/Form';
+import FoodLogo from "../LottieFiles/FoodLogo";
 
 
 
@@ -35,18 +36,18 @@ const Login = () => {
       ...formData
     }
     dispatch(logInFetch(strongParams))
-
   }
 
 
 
   return (
-    <div className="login-form">
+    <div className="form-container sign-in-container">
       <form
         id="login"
         onSubmit={handleSubmit}
       >
-        <h1>{ }</h1>
+        <h5>Already have an account?</h5>
+        <h6>Sign In</h6>
         <div>
           <label htmlFor="username"></label>
           <input
@@ -69,7 +70,6 @@ const Login = () => {
         </div>
         <button
           className="login-btn"
-          id="logIn"
           type="submit"
           value="Login"
         >
