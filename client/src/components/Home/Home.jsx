@@ -1,18 +1,18 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../../styles/home.css';
-// import { baseUrl } from "../../Globals";
+import { baseUrl } from "../../Globals";
 import { Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 
 const Home = () => {
-  // const [ingredients, setIngredients] = useState([]);
+  const [ingredients, setIngredients] = useState([{ id: null, name: "", category: "" }]);
 
-  // useEffect(() => {
-  //   fetch(baseUrl + '/ingredients')
-  //     .then((r) => r.json())
-  //     .then((ingredient) => setIngredients(ingredient))
-  // }, [])
 
+  useEffect(() => {
+    fetch(baseUrl + '/ingredients')
+      .then((r) => r.json())
+      .then((ingredients) => setIngredients(ingredients))
+  }, [])
 
 
   return (
@@ -24,8 +24,7 @@ const Home = () => {
         </Col>
         <Col className="border" xs={3}>
           My Pantry
-          {/* {ingredients && <IngredientsContainer ingredients={ingredients} />} */}
-          <IngredientsContainer />
+          <IngredientsContainer ingredients={ingredients} />
         </Col>
       </Row>
     </div>
