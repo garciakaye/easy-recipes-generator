@@ -7,6 +7,8 @@
     "node": "16.x"
   },
   "dependencies": {
+    "@lottiefiles/lottie-interactivity": "^1.3.4",
+    "@lottiefiles/react-lottie-player": "^3.4.1",
     "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.13.0",
     "@testing-library/react": "^11.2.7",
