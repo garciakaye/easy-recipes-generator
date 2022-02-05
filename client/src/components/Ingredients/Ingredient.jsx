@@ -8,7 +8,6 @@ const Ingredient = ({ ingredient }) => {
   const dispatch = useDispatch();
 
 
-
   const handleUserIngredientAdd = () => {
     const userIngredient = {
       user_id: user.id,
@@ -18,7 +17,6 @@ const Ingredient = ({ ingredient }) => {
   }
 
   const findUserIngredient = userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id)
-
 
   const handleUserIngredientRemove = () => {
     dispatch(userIngredientsDelete(findUserIngredient.id))
