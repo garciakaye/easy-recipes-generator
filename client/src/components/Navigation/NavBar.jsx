@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { GiMeal } from "react-icons/gi";
 import { CgProfile } from "react-icons/cg";
 import { useNavigate } from 'react-router-dom';
-import FoodLogo from "../LottieFiles/FoodLogo";
+
 
 const NavBar = ({ logOut, loggedIn, user }) => {
 
