@@ -3,6 +3,7 @@ import '../../styles/home.css';
 import { baseUrl } from "../../Globals";
 import { Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
+import RecipesContainer from "../Recipes/RecipesContainer";
 
 const Home = () => {
   const [ingredients, setIngredients] = useState([{ id: null, name: "", category: "" }]);
@@ -21,6 +22,7 @@ const Home = () => {
       <Row>
         <Col className="border" xs={9}>
           Recipes
+          <RecipesContainer />
         </Col>
         <Col className="border" xs={3}>
           My Pantry
