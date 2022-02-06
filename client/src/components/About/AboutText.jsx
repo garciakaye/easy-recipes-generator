@@ -7,7 +7,7 @@ const AboutText = () => {
   return (
     <div className="about-words">
       The <span>Easy Recipes Generator</span> finds recipes with ingredients you already have!
-      <Link to="/login">
+      <Link to="/signup">
         <button type="button"> Try It Now!</button>
       </Link>
 
