@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap');
 
 :root {
+  --lightgreen: rgb(241, 245, 196);;
   --yellowgreen: rgb(158,181,106);
   --limegreen: rgb(176,211,101);
   --brightlime: rgb(214,226,79);

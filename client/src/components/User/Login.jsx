@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logInFetch } from "./userSlice";
 import Form from 'react-bootstrap/Form';
-import FoodLogo from "../LottieFiles/FoodLogo";
+import FoodCarousel from "../LottieFiles/FoodCarousel";
 
 
 
