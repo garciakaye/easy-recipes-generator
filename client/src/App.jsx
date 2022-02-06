@@ -4,7 +4,7 @@ import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 // import Signup from './components/User/Signup';
-// import Login from './components/User/Login';
+import Login from './components/User/Login';
 import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from 'react-redux';
@@ -78,14 +78,14 @@ const App = () => {
           />
           }
         />
-        {/* <Route
-          path="/signup"
-          element={<Signup
-          />
-          }
-        /> */}
         <Route
           path="/login"
+          element={<Forms
+          />
+          }
+        />
+        <Route
+          path="/signup"
           element={<Forms
             loggedIn={loggedIn}
             user={user}
