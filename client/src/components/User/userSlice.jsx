@@ -15,7 +15,7 @@ export function logInFetch(strongParams) {
         if (res.ok) {
           res.json()
             .then(data => {
-              dispatch(userLoggedIn(data.user));
+              dispatch(userLoggedIn(data.user))
               dispatch(userIngredientsGet(data.user_ingredients))
               localStorage.setItem('jwt', data.token)
             })
@@ -46,7 +46,8 @@ const userSlice = createSlice({
         last_name: action.payload.last_name,
         username: action.payload.username,
         password: action.payload.password,
-        user_ingredients: action.payload.user
+        user_ingredients: action.payload.user,
+        ingredients: action.payload.ingredients
       });
       state.status = "idle"
       state.loggedIn = true
