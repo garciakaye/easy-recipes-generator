@@ -51,64 +51,61 @@ const Signup = () => {
   }
 
   return (
-    <div className="signup-form signup-right">
-      <form
-        id="signup"
-        onSubmit={handleSubmit}
+    <form
+      id="signup"
+      onSubmit={handleSubmit}
+    >
+      <div>
+        <label htmlFor="firstname"></label>
+        <input
+          type="text"
+          name="firstname"
+          placeholder="First Name"
+          value={values.firstname}
+          id="firstname"
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="lastname"></label>
+        <input
+          type="text"
+          name="lastname"
+          placeholder="Last Name"
+          value={values.lastname}
+          id="lastname"
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="username"></label>
+        <input
+          type="text"
+          name="username"
+          placeholder="Username"
+          value={values.username}
+          id="username"
+          onChange={handleInputChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="password"></label>
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={values.password}
+          id="password"
+          onChange={handleInputChange}
+        />
+      </div>
+      <button
+        className="signup-btn"
+        id="signUp"
       >
-        <h5>Create An Account</h5>
-        <div>
-          <label htmlFor="firstname"></label>
-          <input
-            type="text"
-            name="firstname"
-            placeholder="First Name"
-            value={values.firstname}
-            id="firstname"
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="lastname"></label>
-          <input
-            type="text"
-            name="lastname"
-            placeholder="Last Name"
-            value={values.lastname}
-            id="lastname"
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="username"></label>
-          <input
-            type="text"
-            name="username"
-            placeholder="Username"
-            value={values.username}
-            id="username"
-            onChange={handleInputChange}
-          />
-        </div>
-        <div>
-          <label htmlFor="password"></label>
-          <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            value={values.password}
-            id="password"
-            onChange={handleInputChange}
-          />
-        </div>
-        <button
-          className="signup-btn"
-          id="signUp"
-        >
-          Create User
-        </button>
-      </form>
-    </div>
+        Create User
+      </button>
+    </form>
   );
 };
 
