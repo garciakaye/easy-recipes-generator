@@ -50,6 +50,6 @@ class UserIngredientsController < ApplicationController
     # end
 
     def user_ingredient_params
-      params.permit(:user_id, :ingredient_id)
+      params.permit(:user_id, :ingredient_id, :ingredient)
     end
 end
