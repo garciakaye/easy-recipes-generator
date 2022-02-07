@@ -7,6 +7,7 @@ const Ingredient = ({ ingredient }) => {
   const userIngredients = useSelector((state) => state.userIngredients.entities)
   const dispatch = useDispatch();
 
+  // console.log(user)
 
   const handleUserIngredientAdd = () => {
     const userIngredient = {
