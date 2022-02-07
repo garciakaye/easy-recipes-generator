@@ -19,10 +19,8 @@ const Forms = () => {
             <Card.Title>
               <FoodCarousel />
             </Card.Title>
-            <Card.Text>
-              <Login />
-              <a href="#/" onClick={handleFormToggle}>Not yet a member?</a>
-            </Card.Text>
+            <Login />
+            <a href="#/" onClick={handleFormToggle}>Not yet a member?</a>
           </Card.Body>
         </Card>
       ) : (
@@ -31,10 +29,8 @@ const Forms = () => {
             <Card.Title>
               <FoodCarousel />
             </Card.Title>
-            <Card.Text>
-              <Signup />
-              <a href="#/" onClick={handleFormToggle}>Already have an account?</a>
-            </Card.Text>
+            <Signup />
+            <a href="#/" onClick={handleFormToggle}>Already have an account?</a>
           </Card.Body>
         </Card>
       )
