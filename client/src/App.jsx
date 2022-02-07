@@ -4,14 +4,14 @@ import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
 // import Signup from './components/User/Signup';
-import Login from './components/User/Login';
+// import Login from './components/User/Login';
 import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from 'react-redux';
 import { userLoggedIn, userLogout } from "./components/User/userSlice";
-import { userIngredientsGet } from "./components/Ingredients/userIngredientsSlice";
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
+import { userIngredientsGet } from "./components/Ingredients/userIngredientsSlice";
 
 const App = () => {
   const loggedIn = useSelector(state => state.user.loggedIn)
