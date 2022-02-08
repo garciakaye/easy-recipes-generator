@@ -8,7 +8,7 @@ import Home from './components/Home/Home';
 import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from 'react-redux';
-import { userLoggedIn, userLogout } from "./components/User/userSlice";
+import { userLoggedIn, userLogout, ingredientsFetched } from "./components/User/userSlice";
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
 import { userIngredientsGet } from "./components/Ingredients/userIngredientsSlice";
@@ -28,6 +28,7 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('jwt')
     if (token && !loggedIn) {
+      console.log("token && !loggedIn")
       fetch(baseUrl + '/get-current-user', {
         method: "GET",
         headers: {
@@ -38,10 +39,15 @@ const App = () => {
       })
         .then(resp => resp.json())
         .then(user => {
-          dispatch(userLoggedIn(user))
-          dispatch(userIngredientsGet(user.user_ingredients)) //this is undefined
+          console.log(user, "***************************")
+          dispatch(userLoggedIn(user.user))
+          dispatch(userIngredientsGet(user.user_ingredients))
+          dispatch(ingredientsFetched(user.all_ingredients))
         })
 
+    }
+    else {
+      console.log("else running")
     }
   }, [loggedIn, dispatch])
 
@@ -78,12 +84,12 @@ const App = () => {
           />
           }
         />
-        <Route
+        {/* <Route
           path="/login"
           element={<Forms
           />
           }
-        />
+        /> */}
         <Route
           path="/signup"
           element={<Forms
