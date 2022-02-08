@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { baseUrl, headers } from "../../Globals";
+import { ingredientsFetched } from "../User/userSlice";
 
 export function userIngredientsPost(strongParams) {
   return function (dispatch) {
@@ -35,7 +36,8 @@ const userIngredientsSlice = createSlice({
       state.entities.push({
         user_id: action.payload.user_id,
         ingredient_id: action.payload.ingredient_id,
-        ingredient: action.payload.ingredient
+        // user_ingredients: action.payload.user_ingredients,
+        // ingredient: action.payload.ingredient
       });
     },
     userIngredientsGet(state, action) {
