@@ -9,5 +9,3 @@ export const getToken = () => {
     'Authorization': `bearer ${localStorage.getItem('jwt')}`
   }
 }
-
-export const apiUrl = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=onion%2Ccelery%2Ccarrots&number=5&ignorePantry=true&ranking=1"
