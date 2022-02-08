@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { baseUrl, headers } from "../../Globals";
 import { useDispatch } from "react-redux";
-import { userLoggedIn } from "./userSlice";
+import { userLoggedIn, ingredientsFetched } from "./userSlice";
 import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
 import FoodCarousel from "../LottieFiles/FoodCarousel";
 
@@ -46,6 +46,7 @@ const Signup = () => {
       .then(data => {
         userLoggedIn(data.user);
         dispatch(userIngredientsGet(data.user_ingredients))
+        dispatch(ingredientsFetched(data.all_ingredients))
         localStorage.setItem('jwt', data.token)
       })
   }

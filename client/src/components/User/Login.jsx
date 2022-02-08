@@ -2,12 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logInFetch } from "./userSlice";
-import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
 
 
 const Login = () => {
   const loggedIn = useSelector(state => state.user.loggedIn)
-  const userIngredients = useSelector((state) => state.userIngredients.entities)
+
 
   const navigate = useNavigate();
 
@@ -20,6 +19,7 @@ const Login = () => {
 
   useEffect(() => {
     if (loggedIn) {
+      console.log("navigating on loggedin")
       navigate("/home")
     }
   }, [loggedIn, navigate])
@@ -35,7 +35,6 @@ const Login = () => {
       ...formData
     }
     dispatch(logInFetch(strongParams))
-    dispatch(userIngredientsGet(userIngredients))
   }
 
 

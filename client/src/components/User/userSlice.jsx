@@ -15,9 +15,10 @@ export function logInFetch(strongParams) {
         if (res.ok) {
           res.json()
             .then(data => {
+              localStorage.setItem('jwt', data.token)
               dispatch(userLoggedIn(data.user))
               dispatch(userIngredientsGet(data.user_ingredients))
-              localStorage.setItem('jwt', data.token)
+              dispatch(ingredientsFetched(data.all_ingredients))
             })
         } else {
           res.json().then(errors => dispatch(setErrors(errors)))
@@ -31,6 +32,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     entities: [],
+    all_ingredients: [],
     status: 'idle',
     loggedIn: false,
     errors: null
@@ -40,6 +42,7 @@ const userSlice = createSlice({
       state.errors = null
     },
     userLoggedIn(state, action) {
+      console.log("state: ", state, "action: ", action)
       state.entities.push({
         id: action.payload.id,
         first_name: action.payload.first_name,
@@ -52,6 +55,9 @@ const userSlice = createSlice({
       state.status = "idle"
       state.loggedIn = true
       state.errors = null
+    },
+    ingredientsFetched(state, action) {
+      state.all_ingredients = action.payload
     },
     userLogout(state, action) {
       state.loggedIn = false
@@ -67,6 +73,6 @@ const userSlice = createSlice({
 });
 
 // export the action creators
-export const { userLoggedIn, userLogout, resetErrors, setErrors } = userSlice.actions;
+export const { ingredientsFetched, userLoggedIn, userLogout, resetErrors, setErrors } = userSlice.actions;
 
 export default userSlice.reducer;
