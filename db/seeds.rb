@@ -7,8 +7,6 @@ UserIngredient.destroy_all
 
 
 
-
-
 condiments = [
   "aji amarillo",
   "apple sauce",
@@ -18,7 +16,7 @@ condiments = [
   "beer mustard",
   "black olives",
   "bonito flakes",
-  "bread &amp; butter pickles",
+  "bread & butter pickles",
   "brown mustard",
   "buffalo sauce",
   "candied jalapenos",
