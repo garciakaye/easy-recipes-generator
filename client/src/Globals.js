@@ -9,3 +9,4 @@ export const getToken = () => {
     'Authorization': `bearer ${localStorage.getItem('jwt')}`
   }
 }
+
