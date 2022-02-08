@@ -6,14 +6,14 @@ import IngredientsContainer from "../Ingredients/IngredientsContainer";
 import RecipesContainer from "../Recipes/RecipesContainer";
 
 const Home = () => {
-  const [ingredients, setIngredients] = useState([{ id: null, name: "", category: "" }]);
+  // const [ingredients, setIngredients] = useState([{ id: null, name: "", category: "" }]);
 
 
-  useEffect(() => {
-    fetch(baseUrl + '/ingredients')
-      .then((r) => r.json())
-      .then((ingredients) => setIngredients(ingredients))
-  }, [])
+  // useEffect(() => {
+  //   fetch(baseUrl + '/ingredients')
+  //     .then((r) => r.json())
+  //     .then((ingredients) => setIngredients(ingredients))
+  // }, [])
 
 
   return (
@@ -26,7 +26,8 @@ const Home = () => {
         </Col>
         <Col className="border" xs={3}>
           My Pantry
-          <IngredientsContainer ingredients={ingredients} />
+          {/* <IngredientsContainer ingredients={ingredients} /> */}
+          <IngredientsContainer />
         </Col>
       </Row>
     </div>
