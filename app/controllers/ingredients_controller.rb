@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action :set_ingredient, only: [:show, :update, :destroy]
+  before_action only: [:show, :update, :destroy]
 
   # GET /ingredients
   def index
