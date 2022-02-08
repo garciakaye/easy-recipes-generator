@@ -13,15 +13,15 @@ const RecipesContainer = () => {
   const [recipes, setRecipes] = useState([]);
 
 
-  useEffect(() => {
-    fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=onions%2C%20celery%2C%20carrots&number=5&ignorePantry=true&ranking=1", {
-      "method": "GET",
-      "headers": apiHeaders
-    })
-      .then(response => response.json())
-      .then(recipes => console.log(recipes))
+  // useEffect(() => {
+  //   fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=onions%2C%20celery%2C%20carrots&number=5&ignorePantry=true&ranking=1", {
+  //     "method": "GET",
+  //     "headers": apiHeaders
+  //   })
+  //     .then(response => response.json())
+  //     .then(recipes => console.log(recipes))
 
-  }, [])
+  // }, [])
 
 
 
