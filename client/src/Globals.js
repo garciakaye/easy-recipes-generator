@@ -6,10 +6,6 @@ export const headers = {
 
 export const getToken = () => {
   return {
-    'Authorization': `bearer ${ localStorage.getItem('jwt') }`
+    'Authorization': `bearer ${localStorage.getItem('jwt')}`
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> parent of 83d9426 (Clean code and remove empty spaces)
