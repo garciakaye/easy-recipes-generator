@@ -1,8 +1,10 @@
 import React from 'react';
+import { useSelector } from "react-redux";
 import IngredientsCategoryCard from "./IngredientsCategoryCard";
 
-const IngredientsContainer = ({ ingredients }) => {
+const IngredientsContainer = () => {
 
+  const ingredients = useSelector(state => state.user.all_ingredients)
   const categories = [...new Set(ingredients.map(ingredient => ingredient.category))]
 
 
