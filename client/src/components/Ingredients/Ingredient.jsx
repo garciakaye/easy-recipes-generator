@@ -7,13 +7,14 @@ const Ingredient = ({ ingredient }) => {
   const userIngredients = useSelector((state) => state.userIngredients.entities)
   const dispatch = useDispatch();
 
-  // console.log(user)
+  console.log(user)
 
   const handleUserIngredientAdd = () => {
     const userIngredient = {
       user_id: user.id,
       ingredient_id: ingredient.id
     }
+    console.log(userIngredient)
     dispatch(userIngredientsPost(userIngredient))
   }
 
