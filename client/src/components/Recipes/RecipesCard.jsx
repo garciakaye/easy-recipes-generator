@@ -7,11 +7,7 @@ import { useDispatch } from "react-redux";
 const RecipesCard = ({ recipe }) => {
   const dispatch = useDispatch();
 
-  const missedIngredientsArray = recipe.missedIngredients.map(ingredient => {
-    return (
-      <div>{ingredient.name}</div>
-    )
-  })
+  const missedIngredientsArray = recipe.missedIngredients.map(ingredient => ingredient.name)
 
   const handleClick = () => {
     fetch(apiUrlRecipeInformation + recipe.id, {
