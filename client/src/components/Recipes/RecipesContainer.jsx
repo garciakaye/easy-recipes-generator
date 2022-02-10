@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import RecipesCard from "./RecipesCard";
 import { recipesGet } from "./recipesSlice";
+import { apiUrlFindByIngredients } from "../../Globals";
 
 
 const RecipesContainer = () => {
@@ -15,7 +16,7 @@ const RecipesContainer = () => {
 
 
   useEffect(() => {
-    fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${userIngredientNamesArray}&number=10&ignorePantry=true&ranking=1`, {
+    fetch(apiUrlFindByIngredients + `${userIngredientNamesArray}&number=6&ignorePantry=true&ranking=2`, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -24,15 +25,16 @@ const RecipesContainer = () => {
     })
       .then(response => response.json())
       .then(recipes => setRecipes(recipes))
-    dispatch(recipesGet)
+    dispatch(recipesGet(recipes))
 
-  }, [userIngredientNamesArray, dispatch])
+  }, [userIngredientNamesArray, dispatch, recipes])
 
   const recipeIds = () => {
     return recipes.map(recipe => {
       return <RecipesCard key={recipe.id} recipe={recipe}></RecipesCard>
     })
   }
+
 
 
   return (
