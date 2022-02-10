@@ -18,7 +18,7 @@ class UserIngredientsController < ApplicationController
     @user_ingredient = UserIngredient.new(user_ingredient_params)
 
     if @user_ingredient.save
-      render json: @user_ingredient, status: :created, location: @user_ingredient
+      render json: @user_ingredient, status: :created
     else
       render json: @user_ingredient.errors, status: :unprocessable_entity
     end
@@ -60,6 +60,8 @@ class UserIngredientsController < ApplicationController
     # end
 
     def user_ingredient_params
-      params.permit(:user_id, :ingredient_id, :user_ingredient)
+      params.permit(:user_id, :ingredient_id, :user_ingredients, :ingredient)
     end
 end
+
+# params.permit(:user_id, :ingredient_id, :user_ingredients, :ingredient)

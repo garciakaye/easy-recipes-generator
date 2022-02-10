@@ -1,27 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { userIngredientsPost, userIngredientsDelete } from "./userIngredientsSlice";
+import { userIngredientRemove, userIngredientAdd } from "./userIngredientsSlice";
+import { baseUrl, headers } from "../../Globals";
 
 const Ingredient = ({ ingredient }) => {
   const user = useSelector((state) => state.user.entities[0])
   const userIngredients = useSelector((state) => state.userIngredients.entities)
+
   const dispatch = useDispatch();
 
-  console.log(user)
 
   const handleUserIngredientAdd = () => {
     const userIngredient = {
       user_id: user.id,
       ingredient_id: ingredient.id
     }
-    console.log(userIngredient)
-    dispatch(userIngredientsPost(userIngredient))
+    fetch(baseUrl + "/user_ingredients", {
+      method: "POST",
+      headers,
+      body: JSON.stringify(userIngredient)
+    })
+      .then(res => res.json())
+      .then(data => {
+        setFindUserIngredient(data)
+        dispatch(userIngredientAdd(data))
+      })
+    // dispatch(userIngredientsPost(userIngredient))
+
   }
 
-  const findUserIngredient = userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id)
+  const [findUserIngredient, setFindUserIngredient] = useState(userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id))
 
   const handleUserIngredientRemove = () => {
-    dispatch(userIngredientsDelete(findUserIngredient.id))
+
+    fetch(baseUrl + `/user_ingredients/${findUserIngredient.id}`, {
+      method: "DELETE",
+    })
+      .then(dispatch(userIngredientRemove(findUserIngredient.id)))
+
+    setFindUserIngredient(null)
   }
 
 

@@ -11,11 +11,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { userLoggedIn, userLogout, ingredientsFetched } from "./components/User/userSlice";
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
-import { userIngredientsGet } from "./components/Ingredients/userIngredientsSlice";
+import { userIngredientsGet, userIngredientsName } from "./components/Ingredients/userIngredientsSlice";
+import { recipesGet } from "./components/Recipes/recipesSlice";
 
 const App = () => {
   const loggedIn = useSelector(state => state.user.loggedIn)
   const user = useSelector(state => state.user.entities[0])
+  const recipes = useSelector((state) => state.recipes.entities)
   const dispatch = useDispatch()
 
 
@@ -28,7 +30,6 @@ const App = () => {
   useEffect(() => {
     const token = localStorage.getItem('jwt')
     if (token && !loggedIn) {
-      console.log("token && !loggedIn")
       fetch(baseUrl + '/get-current-user', {
         method: "GET",
         headers: {
@@ -39,17 +40,15 @@ const App = () => {
       })
         .then(resp => resp.json())
         .then(user => {
-          console.log(user, "***************************")
           dispatch(userLoggedIn(user.user))
           dispatch(userIngredientsGet(user.user_ingredients))
+          dispatch(userIngredientsName(user.ingredients))
           dispatch(ingredientsFetched(user.all_ingredients))
+          dispatch(recipesGet(recipes))
         })
 
     }
-    else {
-      console.log("else running")
-    }
-  }, [loggedIn, dispatch])
+  }, [loggedIn, dispatch, recipes])
 
 
   return (

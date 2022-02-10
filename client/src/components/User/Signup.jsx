@@ -3,7 +3,6 @@ import { baseUrl, headers } from "../../Globals";
 import { useDispatch } from "react-redux";
 import { userLoggedIn, ingredientsFetched } from "./userSlice";
 import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
-import FoodCarousel from "../LottieFiles/FoodCarousel";
 
 
 const Signup = () => {
