@@ -1,5 +1,5 @@
 import React from 'react';
-import RecipesCard from "./RecipesCard";
+
 
 const Recipes = ({ recipes }) => {
   // console.log("hi")
