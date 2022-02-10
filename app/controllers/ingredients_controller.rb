@@ -1,11 +1,6 @@
 class IngredientsController < ApplicationController
-  before_action only: [:show, :update, :destroy]
+  before_action only: [:index, :show,]
 
-
-  def category_desc
-    ingredients = Ingredient.category_desc
-    render json: @ingredients
-  end
 
   # GET /ingredients
   def index
@@ -20,29 +15,29 @@ class IngredientsController < ApplicationController
   end
 
   # POST /ingredients
-  def create
-    @ingredient = Ingredient.new(ingredient_params)
+  # def create
+  #   @ingredient = Ingredient.new(ingredient_params)
 
-    if @ingredient.save
-      render json: @ingredient, status: :created, location: @ingredient
-    else
-      render json: @ingredient.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @ingredient.save
+  #     render json: @ingredient, status: :created, location: @ingredient
+  #   else
+  #     render json: @ingredient.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /ingredients/1
-  def update
-    if @ingredient.update(ingredient_params)
-      render json: @ingredient
-    else
-      render json: @ingredient.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @ingredient.update(ingredient_params)
+  #     render json: @ingredient
+  #   else
+  #     render json: @ingredient.errors, status: :unprocessable_entity
+  #   end
+  # end
 
-  # DELETE /ingredients/1
-  def destroy
-    @ingredient.destroy
-  end
+  # # DELETE /ingredients/1
+  # def destroy
+  #   @ingredient.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
