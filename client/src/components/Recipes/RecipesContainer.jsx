@@ -1,33 +1,43 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
-import { apiHeaders } from "../../Globals";
+import { useDispatch, useSelector } from "react-redux";
+import RecipesCard from "./RecipesCard";
+import { recipesGet } from "./recipesSlice";
+
 
 const RecipesContainer = () => {
-  const user = useSelector((state) => state.user.entities[0])
-  const userIngredients = useSelector((state) => state.userIngredients.entities)
-  // console.log(user.ingredients)
+  const userIngredientsNames = useSelector((state) => state.userIngredients.ingredients)
 
-  // const userIngredientsNames = user.ingredients.map(name => console.log(name))
-  // console.log(userIngredientsNames)
+  const dispatch = useDispatch();
 
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipes] = useState([])
+
+  const userIngredientNamesArray = userIngredientsNames.map(ingredient => ingredient.name)
 
 
-  // useEffect(() => {
-  //   fetch("https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=onions%2C%20celery%2C%20carrots&number=5&ignorePantry=true&ranking=1", {
-  //     "method": "GET",
-  //     "headers": apiHeaders
-  //   })
-  //     .then(response => response.json())
-  //     .then(recipes => console.log(recipes))
+  useEffect(() => {
+    fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients=${userIngredientNamesArray}&number=10&ignorePantry=true&ranking=1`, {
+      "method": "GET",
+      "headers": {
+        "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+        "x-rapidapi-key": process.env.REACT_APP_API_KEY
+      }
+    })
+      .then(response => response.json())
+      .then(recipes => setRecipes(recipes))
+    dispatch(recipesGet)
 
-  // }, [])
+  }, [userIngredientNamesArray, dispatch])
 
+  const recipeIds = () => {
+    return recipes.map(recipe => {
+      return <RecipesCard key={recipe.id} recipe={recipe}></RecipesCard>
+    })
+  }
 
 
   return (
     <div>
-
+      {recipeIds()}
     </div>
   );
 };
