@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import '../../styles/forms.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { logInFetch } from "./userSlice";
@@ -6,7 +7,6 @@ import { logInFetch } from "./userSlice";
 
 const Login = () => {
   const loggedIn = useSelector(state => state.user.loggedIn)
-
 
   const navigate = useNavigate();
 
@@ -19,7 +19,6 @@ const Login = () => {
 
   useEffect(() => {
     if (loggedIn) {
-      console.log("navigating on loggedin")
       navigate("/home")
     }
   }, [loggedIn, navigate])
