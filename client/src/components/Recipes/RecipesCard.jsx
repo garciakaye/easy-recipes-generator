@@ -1,11 +1,20 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { useSelector } from "react-redux";
+import { apiUrlRecipeInformation } from "../../Globals";
+import { recipesGet } from "./recipesSlice";
+import { useDispatch } from "react-redux";
 
 const RecipesCard = ({ recipe }) => {
+  const dispatch = useDispatch();
+
+  const missedIngredientsArray = recipe.missedIngredients.map(ingredient => {
+    return (
+      <div>{ingredient.name}</div>
+    )
+  })
 
   const handleClick = () => {
-    fetch(`https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids=${recipe.id}`, {
+    fetch(apiUrlRecipeInformation + recipe.id, {
       "method": "GET",
       "headers": {
         "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
@@ -14,10 +23,13 @@ const RecipesCard = ({ recipe }) => {
     })
       .then(response => response.json())
       .then(res => console.log(res))
+    dispatch(recipesGet())
       .catch(err => {
         console.error(err);
       });
   }
+
+
 
   return (
     <Card className="recipes-card" style={{ width: '18rem' }}>
@@ -25,6 +37,7 @@ const RecipesCard = ({ recipe }) => {
       <Card.Body>
         <Card.Title>{recipe.title}</Card.Title>
         <Card.Text>
+          {missedIngredientsArray}
         </Card.Text>
         {/* <Button variant="primary">Go somewhere</Button> */}
       </Card.Body>
