@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { baseUrl, headers } from "../../Globals";
-import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
+import { userIngredientsGet, userIngredientsName } from "../Ingredients/userIngredientsSlice";
+import { recipesGet } from "../Recipes/recipesSlice";
 
 export function logInFetch(strongParams) {
   return function (dispatch) {
@@ -18,7 +19,9 @@ export function logInFetch(strongParams) {
               localStorage.setItem('jwt', data.token)
               dispatch(userLoggedIn(data.user))
               dispatch(userIngredientsGet(data.user_ingredients))
+              dispatch(userIngredientsName(data.ingredients))
               dispatch(ingredientsFetched(data.all_ingredients))
+
             })
         } else {
           res.json().then(errors => dispatch(setErrors(errors)))
@@ -42,7 +45,6 @@ const userSlice = createSlice({
       state.errors = null
     },
     userLoggedIn(state, action) {
-      console.log("state: ", state, "action: ", action)
       state.entities.push({
         id: action.payload.id,
         first_name: action.payload.first_name,
