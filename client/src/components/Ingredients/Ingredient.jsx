@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { userIngredientsPost, userIngredientRemove, userIngredientAdd } from "./userIngredientsSlice";
+import { userIngredientRemove, userIngredientAdd } from "./userIngredientsSlice";
 import { baseUrl, headers } from "../../Globals";
 
 const Ingredient = ({ ingredient }) => {
