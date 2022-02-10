@@ -1,6 +1,4 @@
 import React from 'react';
-// import Signup from "../User/Signup";
-// import Login from "../User/Login";
 import { Link } from "react-router-dom";
 
 const AboutText = () => {
