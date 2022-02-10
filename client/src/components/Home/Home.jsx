@@ -1,20 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../../styles/home.css';
-import { baseUrl } from "../../Globals";
+// import { baseUrl } from "../../Globals";
 import { Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 import RecipesContainer from "../Recipes/RecipesContainer";
+import RecipesCard from "../Recipes/RecipesCard";
 
 const Home = () => {
-  // const [ingredients, setIngredients] = useState([{ id: null, name: "", category: "" }]);
-
-
-  // useEffect(() => {
-  //   fetch(baseUrl + '/ingredients')
-  //     .then((r) => r.json())
-  //     .then((ingredients) => setIngredients(ingredients))
-  // }, [])
-
 
   return (
     <div className="home-container"  >
