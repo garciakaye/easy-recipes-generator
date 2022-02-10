@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { baseUrl, headers } from "../../Globals";
 import { userIngredientsGet, userIngredientsName } from "../Ingredients/userIngredientsSlice";
-import { recipesGet } from "../Recipes/recipesSlice";
+
 
 export function logInFetch(strongParams) {
   return function (dispatch) {
