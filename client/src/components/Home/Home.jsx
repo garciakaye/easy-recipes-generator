@@ -4,7 +4,7 @@ import '../../styles/home.css';
 import { Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 import RecipesContainer from "../Recipes/RecipesContainer";
-import RecipesCard from "../Recipes/RecipesCard";
+
 
 const Home = () => {
 
