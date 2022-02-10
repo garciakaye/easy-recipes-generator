@@ -1,15 +1,23 @@
-import React from 'react';
 import { createSlice } from "@reduxjs/toolkit";
-import { baseUrl, headers } from "../../Globals";
 
-export function recipesFetch(strongParams) {
-  return function (dispatch) {
-    // fetch recipes from API
-    // format Fred's ingredients dynamically with the API end point format
-    // map through Fred's ingredients names
-    // access Fred's ingredients with useSelector
 
-  }
-}
+const recipesSlice = createSlice({
+  name: 'recipes',
+  initialState: {
+    entities: [],
+    status: 'idle',
+  },
+  reducers: {
+    recipesGet(state, action) {
+      state.entities = action.payload
+    },
+    recipesLoading(state, action) {
+      state.status = "loading"
+    },
+  },
+});
 
-export default recipesFetch;
+// export the action creators
+export const { recipesGet } = recipesSlice.actions;
+
+export default recipesSlice.reducer;
