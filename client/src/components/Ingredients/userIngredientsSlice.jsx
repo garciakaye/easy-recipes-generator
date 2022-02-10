@@ -1,33 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { baseUrl, headers } from "../../Globals";
-import { ingredientsFetched } from "../User/userSlice";
 
-// export function userIngredientsPost(strongParams) {
-//   return function (dispatch) {
-//     dispatch({ type: "userIngredients/userIngredientsLoading" });
-//     fetch(baseUrl + "/user_ingredients", {
-//       method: "POST",
-//       headers,
-//       body: JSON.stringify(strongParams)
-//     })
-//       .then(res => res.json())
-//       .then(data => {
 
-//         dispatch(userIngredientAdd(data))
-//       })
-//   }
-// }
-
-// export function userIngredientsDelete(id) {
-//   return function (dispatch) {
-//     dispatch({ type: "userIngredients/userIngredientsRemoving" });
-//     debugger
-//     fetch(baseUrl + `/user_ingredients/${id}`, {
-//       method: "DELETE",
-//     })
-//       .then(dispatch(userIngredientRemove(id)))
-//   }
-// }
 
 const userIngredientsSlice = createSlice({
   name: "userIngredients",
