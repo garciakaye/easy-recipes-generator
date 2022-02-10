@@ -1,6 +1,12 @@
 class IngredientsController < ApplicationController
   before_action only: [:show, :update, :destroy]
 
+
+  def category_desc
+    ingredients = Ingredient.category_desc
+    render json: @ingredients
+  end
+
   # GET /ingredients
   def index
     @ingredients = Ingredient.order(category: :desc, name: :asc)
