@@ -10,5 +10,5 @@ export const getToken = () => {
   }
 }
 
-export const apiUrlFindByIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients?ingredients='
+export const apiUrlFindByIngredients = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?limitLicense=true&offset=0&number=20&addRecipeInformation=true&fillIngredients=true&includeIngredients='
 export const apiUrlRecipeInformation = 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/informationBulk?ids='

@@ -1,5 +1,4 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { getDefaultMiddleware } from "@reduxjs/toolkit";
 import userIngredientsReducer from "./components/Ingredients/userIngredientsSlice";
 import userReducer from "./components/User/userSlice";
 import recipesReducer from "./components/Recipes/recipesSlice";

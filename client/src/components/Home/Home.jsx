@@ -4,10 +4,11 @@ import '../../styles/home.css';
 import { Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 import RecipesContainer from "../Recipes/RecipesContainer";
-
+import { recipesGet } from "../Recipes/recipesSlice";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
-
+  const dispatch = useDispatch();
   return (
     <div className="home-container"  >
       Homepage
