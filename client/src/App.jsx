@@ -3,7 +3,6 @@ import React, { useEffect } from 'react';
 import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
-// import Signup from './components/User/Signup';
 // import Login from './components/User/Login';
 import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
