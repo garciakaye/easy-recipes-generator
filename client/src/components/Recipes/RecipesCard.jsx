@@ -1,14 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { apiUrlRecipeInformation } from "../../Globals";
-import { recipesGet } from "./recipesSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { CgExternal } from "react-icons/cg";
 
 const RecipesCard = ({ recipe }) => {
-
-
-
-
 
 
   return (
@@ -16,15 +10,16 @@ const RecipesCard = ({ recipe }) => {
       <Card.Img variant="top" src={recipe.image} />
       <Card.Body>
         <Card.Title>{recipe.title}</Card.Title>
-        <Card.Text>
-
-          {recipe.sourceUrl}
-
-        </Card.Text>
-        {/* <Button variant="primary">Go somewhere</Button> */}
+        {recipe.missedIngredients.map((ingredient, index) => {
+          return <Card.Text key={index}>
+            {ingredient.name}
+          </Card.Text>
+        })}
+        <a target="_blank" rel="noreferrer" href={recipe.sourceUrl}><CgExternal /></a>
       </Card.Body>
     </Card >
   );
 };
 
 export default RecipesCard;
+
