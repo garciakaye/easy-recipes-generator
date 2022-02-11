@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import RecipesCard from "./RecipesCard";
 import { apiUrlFindByIngredients } from "../../Globals";
-
 
 const RecipesContainer = () => {
   const userIngredientsNames = useSelector((state) => state.userIngredients.ingredients)
 
-  const [recipeList, setRecipeList] = useState({})
 
+  const [recipeList, setRecipeList] = useState({})
+  // const dispatch = useDispatch();
 
   useEffect(() => {
     const userIngredientNamesArray = userIngredientsNames.map(ingredient => ingredient.name)

@@ -49,4 +49,3 @@ const NavBar = ({ logOut, loggedIn, user }) => {
 
 export default NavBar;
 
-// { loggedIn ? loggedInLinks() : loggedOutLinks() }

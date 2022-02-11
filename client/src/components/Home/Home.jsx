@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/home.css';
 import { Row, Col } from "react-bootstrap";
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 import RecipesContainer from "../Recipes/RecipesContainer";
-import { recipesGet } from "../Recipes/recipesSlice";
-import { useDispatch, useSelector } from "react-redux";
+
 
 
 const Home = () => {
-  // const recipes = useSelector((state) => state.recipes.entities)
-
-
-  // const dispatch = useDispatch();
-
-  // dispatch(recipesGet(recipes))
 
 
 

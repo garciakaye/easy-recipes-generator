@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { userIngredientRemove, userIngredientAdd } from "./userIngredientsSlice";
 import { baseUrl, headers } from "../../Globals";
-import { recipesGet } from "../Recipes/recipesSlice";
 
 const Ingredient = ({ ingredient }) => {
   const user = useSelector((state) => state.user.entities[0])
   const userIngredients = useSelector((state) => state.userIngredients.entities)
-  const recipes = useSelector((state) => state.recipes.entities)
   const dispatch = useDispatch();
 
 
