@@ -1,5 +1,5 @@
 import './styles/App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './components/Home/Home';
@@ -11,12 +11,11 @@ import { userLoggedIn, userLogout, ingredientsFetched } from "./components/User/
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
 import { userIngredientsGet, userIngredientsName } from "./components/Ingredients/userIngredientsSlice";
-import { recipesGet } from "./components/Recipes/recipesSlice";
+
 
 const App = () => {
   const loggedIn = useSelector(state => state.user.loggedIn)
   const user = useSelector(state => state.user.entities[0])
-  const recipes = useSelector((state) => state.recipes.entities)
   const dispatch = useDispatch()
 
 
@@ -43,11 +42,10 @@ const App = () => {
           dispatch(userIngredientsGet(user.user_ingredients))
           dispatch(userIngredientsName(user.ingredients))
           dispatch(ingredientsFetched(user.all_ingredients))
-          dispatch(recipesGet(recipes))
         })
 
     }
-  }, [loggedIn, dispatch, recipes])
+  }, [loggedIn, dispatch])
 
 
   return (
@@ -84,7 +82,7 @@ const App = () => {
         />
         {/* <Route
           path="/login"
-          element={<Forms
+          element={<Login
           />
           }
         /> */}
