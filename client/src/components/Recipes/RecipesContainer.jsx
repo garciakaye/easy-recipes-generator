@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import RecipesCard from "./RecipesCard";
 import { apiUrlFindByIngredients } from "../../Globals";
 
@@ -22,10 +22,9 @@ const RecipesContainer = () => {
       })
       let recipeData = await response.json()
       setRecipeList(recipeData)
-      // console.log(recipeData)
     }
     getRecipes()
-  }, [])
+  }, [userIngredientsNames])
 
 
 
@@ -37,7 +36,7 @@ const RecipesContainer = () => {
 
 
   return (
-    <div>
+    <div className="recipes-container">
       {recipeList.results ? renderRecipeCards() : null}
     </div>
   );
