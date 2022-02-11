@@ -25,8 +25,6 @@ const Ingredient = ({ ingredient }) => {
         setFindUserIngredient(data)
         dispatch(userIngredientAdd(data))
       })
-    // dispatch(userIngredientsPost(userIngredient))
-
   }
 
   const [findUserIngredient, setFindUserIngredient] = useState(userIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id))
