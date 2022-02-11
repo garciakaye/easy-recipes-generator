@@ -9,12 +9,7 @@ const store = configureStore({
     userIngredients: userIngredientsReducer,
     user: userReducer,
     recipes: recipesReducer
-  },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      immutableCheck: false,
-      serializableCheck: false,
-    })
+  }
 });
 
 export default store;
