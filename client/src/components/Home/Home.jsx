@@ -1,27 +1,41 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../../styles/home.css';
 import { Row, Col } from "react-bootstrap";
+// import IngredientsContainer from "../Ingredients/IngredientsContainer";
+// import RecipesContainer from "../Recipes/RecipesContainer";
+import { useNavigate } from 'react-router-dom';
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
-import RecipesContainer from "../Recipes/RecipesContainer";
 
 
 
-const Home = () => {
+const Home = ({ loggedIn }) => {
+  const [allIngredients, setAllIngredients] = useState([])
 
+  useEffect(() => {
+    fetch('/ingredients')
+      .then((r) => r.json())
+      .then((ingredient) => setAllIngredients(ingredient))
+  }, [])
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loggedIn) {
+      navigate("/signup")
+    }
+  }, [loggedIn, navigate])
 
 
   return (
-    <div className="home-container"  >
+    <div className="home-container" >
       Homepage
       <Row>
         <Col className="border" xs={9}>
           Recipes
-          <RecipesContainer />
         </Col>
         <Col className="border" xs={3}>
           My Pantry
-
-          <IngredientsContainer />
+          <IngredientsContainer allIngredients={allIngredients} />
         </Col>
       </Row>
     </div>
