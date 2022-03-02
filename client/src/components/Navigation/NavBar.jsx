@@ -7,11 +7,12 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import Login from "../User/Login";
 
 
-const NavBar = ({ logOut, loggedIn, user }) => {
+const NavBar = ({ loggedIn, loginUser, logoutUser, currentUser }) => {
+
   const navigate = useNavigate();
 
   const handleLogOut = () => {
-    logOut();
+    logoutUser();
     navigate("/")
   }
 
@@ -26,7 +27,7 @@ const NavBar = ({ logOut, loggedIn, user }) => {
             <Link className="link" to="/" onClick={handleLogOut}>Logout</Link>
           </nav>
           <nav>
-            <Link to="/profile"><CgProfile />{user.first_name}</Link>
+            <Link to="/profile"><CgProfile />{currentUser.first_name}</Link>
           </nav>
         </>
       ) : (
@@ -37,7 +38,7 @@ const NavBar = ({ logOut, loggedIn, user }) => {
           <Dropdown>
             <Dropdown.Toggle>Login</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Login />
+              <Login loggedIn={loggedIn} loginUser={loginUser} logoutUser={logoutUser} currentUser={currentUser} />
             </Dropdown.Menu>
           </Dropdown>
         </>
