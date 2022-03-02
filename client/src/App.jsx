@@ -2,16 +2,8 @@ import './styles/App.css';
 import React, { useEffect, useState } from 'react';
 import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-<<<<<<< HEAD
-import Home from './components/Home/Home';
-import Profile from "./components/Profile/Profile";
-import { baseUrl, headers, getToken } from "./Globals";
-import { useSelector, useDispatch } from 'react-redux';
-import { userLoggedIn, userLogout, ingredientsFetched } from "./components/User/userSlice";
-=======
 import Home from "./components/Home/Home";
 import Profile from "./components/User/Profile";
->>>>>>> development
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
 import { baseUrl, headers, getToken } from "./Globals";
