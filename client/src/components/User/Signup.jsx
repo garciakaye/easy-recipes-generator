@@ -1,52 +1,58 @@
 import React, { useState } from 'react';
-import { baseUrl, headers } from "../../Globals";
-import { useDispatch } from "react-redux";
-import { userLoggedIn, ingredientsFetched } from "./userSlice";
-import { userIngredientsGet } from "../Ingredients/userIngredientsSlice";
+import { headers } from "../../Globals";
+import { useDispatch, useSelector } from "react-redux";
+import { userLoggedIn, userLogInFetch } from "./userSlice";
+import { useNavigate } from "react-router-dom";
+import ErrorAlert from "../../errorHandling/ErrorAlert";
+import { setErrors } from "../../errorHandling/errorsSlice";
 
 
 const Signup = () => {
+  const errors = useSelector(state => state.errors.entities)
+
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const initialFormValues = {
-    firstname: "",
-    lastname: "",
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
     username: "",
-    password: "",
-  };
+    password: ""
+  })
 
-  const [values, setValues] = useState(initialFormValues)
-
-  const handleInputChange = (event) => {
-    setValues({
-      ...values,
-      [event.target.name]: event.target.value
-    })
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
     const strongParams = {
       user: {
-        first_name: values.firstname,
-        last_name: values.lastname,
-        username: values.username,
-        password: values.password
+        first_name: formData.first_name,
+        last_name: formData.last_name,
+        username: formData.username,
+        password: formData.password
       }
     }
 
-    fetch(baseUrl + "/users", {
+    fetch("/users", {
       method: "POST",
-      headers,
+      headers: headers,
       body: JSON.stringify(strongParams)
     })
-      .then(resp => resp.json())
-      .then(data => {
-        userLoggedIn(data.user);
-        dispatch(userIngredientsGet(data.user_ingredients))
-        dispatch(ingredientsFetched(data.all_ingredients))
-        localStorage.setItem('jwt', data.token)
+      .then(res => {
+        if (res.ok) {
+          res.json()
+            .then(data => {
+              localStorage.setItem("jwt", data.token)
+              dispatch(userLogInFetch(data.user))
+              dispatch(userLoggedIn(true));
+            })
+            .then(navigate('/'))
+        } else {
+          res.json().then(e => dispatch(setErrors(e)))
+        }
       })
   }
 
@@ -61,7 +67,7 @@ const Signup = () => {
           type="text"
           name="firstname"
           placeholder="First Name"
-          value={values.firstname}
+          value={formData.first_name}
           id="firstname"
           onChange={handleInputChange}
         />
@@ -72,7 +78,7 @@ const Signup = () => {
           type="text"
           name="lastname"
           placeholder="Last Name"
-          value={values.lastname}
+          value={formData.last_name}
           id="lastname"
           onChange={handleInputChange}
         />
@@ -83,7 +89,7 @@ const Signup = () => {
           type="text"
           name="username"
           placeholder="Username"
-          value={values.username}
+          value={formData.username}
           id="username"
           onChange={handleInputChange}
         />
@@ -94,7 +100,7 @@ const Signup = () => {
           type="password"
           name="password"
           placeholder="Password"
-          value={values.password}
+          value={formData.password}
           id="password"
           onChange={handleInputChange}
         />

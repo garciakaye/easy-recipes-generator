@@ -1,15 +1,15 @@
-import React from 'react';
+// import React from 'react';
 
 
-const Recipes = ({ recipes }) => {
-  // console.log("hi")
-  // const recipeIds = recipes.map(recipe => console.log(recipe.id))
+// const Recipes = ({ recipes }) => {
+//   // console.log("hi")
+//   // const recipeIds = recipes.map(recipe => console.log(recipe.id))
 
-  return (
-    <div>
+//   return (
+//     <div>
 
-    </div>
-  );
-};
+//     </div>
+//   );
+// };
 
-export default Recipes;
+// export default Recipes;

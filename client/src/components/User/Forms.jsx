@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Container from 'react-bootstrap/Container';
 import FoodCarousel from "../LottieFiles/FoodCarousel";
 
-const Forms = () => {
+const Forms = ({ loggedIn, logoutUser, loginUser, currentUser }) => {
   const [loginForm, setLoginForm] = useState(false)
 
   const handleFormToggle = () => setLoginForm(!loginForm)
@@ -19,7 +19,7 @@ const Forms = () => {
             <Card.Title>
               <FoodCarousel />
             </Card.Title>
-            <Login />
+            <Login loggedIn={loggedIn} loginUser={loginUser} logoutUser={logoutUser} currentUser={currentUser} />
             <a href="#/" onClick={handleFormToggle}>Not yet a member?</a>
           </Card.Body>
         </Card>
@@ -29,7 +29,7 @@ const Forms = () => {
             <Card.Title>
               <FoodCarousel />
             </Card.Title>
-            <Signup />
+            <Signup loggedIn={loggedIn} logoutUser={logoutUser} />
             <a href="#/" onClick={handleFormToggle}>Already have an account?</a>
           </Card.Body>
         </Card>

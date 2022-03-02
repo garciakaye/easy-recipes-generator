@@ -1,83 +1,81 @@
 import './styles/App.css';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+<<<<<<< HEAD
 import Home from './components/Home/Home';
 import Profile from "./components/Profile/Profile";
 import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from 'react-redux';
 import { userLoggedIn, userLogout, ingredientsFetched } from "./components/User/userSlice";
+=======
+import Home from "./components/Home/Home";
+import Profile from "./components/User/Profile";
+>>>>>>> development
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
-import { userIngredientsGet, userIngredientsName } from "./components/Ingredients/userIngredientsSlice";
+import { baseUrl, headers, getToken } from "./Globals";
 
 
 const App = () => {
-  const loggedIn = useSelector(state => state.user.loggedIn)
-  const user = useSelector(state => state.user.entities[0])
-  const dispatch = useDispatch()
+  const [currentUser, setCurrentUser] = useState({});
+  const [loggedIn, setLoggedIn] = useState(false);
 
+  function loginUser(user) {
+    setCurrentUser(user);
+    setLoggedIn(user);
+  }
 
-  const logOut = () => {
-    dispatch(userLogout(user.id));
+  function logoutUser() {
+    setCurrentUser({});
+    setLoggedIn(false);
     localStorage.removeItem('jwt');
-
   }
 
   useEffect(() => {
     const token = localStorage.getItem('jwt')
     if (token && !loggedIn) {
+      // fetch to rails backend
       fetch(baseUrl + '/get-current-user', {
         method: "GET",
         headers: {
           ...headers,
           ...getToken()
-
         }
       })
         .then(resp => resp.json())
-        .then(user => {
-          dispatch(userLoggedIn(user.user))
-          dispatch(userIngredientsGet(user.user_ingredients))
-          dispatch(userIngredientsName(user.ingredients))
-          dispatch(ingredientsFetched(user.all_ingredients))
-        })
-
+        .then(user => loginUser(user))
+      // setLoggedIn(true);
     }
-  }, [loggedIn, dispatch])
+  }, [loggedIn])
 
 
   return (
     <Router>
       <NavBar
         loggedIn={loggedIn}
-        logOut={logOut}
-        user={user}
+        loginUser={loginUser}
+        logoutUser={logoutUser}
+        currentUser={currentUser}
       />
       <Routes>
         <Route
           path='/home'
           element={<Home
             loggedIn={loggedIn}
-            logOut={logOut}
-            user={user}
+            loginUser={loginUser}
+            logoutUser={logoutUser}
+            currentUser={currentUser}
           />
           }
         />
         <Route
           path="/"
-          element={<About
-          />
-          }
+          element={<About />}
         />
         <Route
           path="/profile"
-          element={<Profile
-            loggedIn={loggedIn}
-            logOut={logOut}
-            user={user}
-          />
-          }
+          element={<Profile />}
         />
         {/* <Route
           path="/login"
@@ -89,7 +87,9 @@ const App = () => {
           path="/signup"
           element={<Forms
             loggedIn={loggedIn}
-            user={user}
+            loginUser={loginUser}
+            logoutUser={logoutUser}
+            currentUser={currentUser}
           />
           }
         />
