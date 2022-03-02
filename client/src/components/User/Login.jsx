@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/forms.css';
 import { useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
-import { logInFetch } from "./userSlice";
+import { baseUrl, headers } from "../../Globals";
 
 
-const Login = () => {
-  const loggedIn = useSelector(state => state.user.loggedIn)
+const Login = ({ loginUser, loggedIn }) => {
 
   const navigate = useNavigate();
 
-  const dispatch = useDispatch();
 
   const [formData, setFormData] = useState({
-    username: '',
-    password: ''
+    username: "",
+    password: ""
   })
 
   useEffect(() => {
@@ -24,24 +21,33 @@ const Login = () => {
   }, [loggedIn, navigate])
 
   const handleChange = (e) => {
+    e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
 
     const strongParams = {
       ...formData
     }
-    dispatch(logInFetch(strongParams))
+
+    fetch(baseUrl + '/login', {
+      method: "POST",
+      headers,
+      body: JSON.stringify(strongParams)
+    })
+      .then(resp => resp.json())
+      .then(data => {
+        //login user
+        loginUser(data.user);
+        localStorage.setItem('jwt', data.token)
+        navigate("/home")
+      })
   }
 
-
   return (
-    <form
-      id="login"
-      onSubmit={handleSubmit}
-    >
+    <form id="login">
       <div>
         <label htmlFor="username"></label>
         <input
@@ -66,6 +72,7 @@ const Login = () => {
         className="login-btn"
         type="submit"
         value="Login"
+        onClick={e => handleSubmit(e)}
       >
         Login
       </button>
@@ -74,4 +81,3 @@ const Login = () => {
 };
 
 export default Login;
-
