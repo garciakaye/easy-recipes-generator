@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../../styles/home.css';
 import { Row, Col } from "react-bootstrap";
-// import IngredientsContainer from "../Ingredients/IngredientsContainer";
 // import RecipesContainer from "../Recipes/RecipesContainer";
 import { useNavigate } from 'react-router-dom';
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
