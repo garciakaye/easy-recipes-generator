@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import '../../styles/forms.css';
 import { useNavigate } from 'react-router-dom';
-import { baseUrl, headers } from "../../Globals";
+import { useDispatch, useSelector } from "react-redux";
+import { logInFetch, userLoggedIn } from "./userSlice";
 
 
-const Login = ({ loginUser, loggedIn }) => {
 
-  const navigate = useNavigate();
+const Login = () => {
+
+  const userStatus = useSelector(state => state.user.status)
+
+  let navigate = useNavigate()
+  const dispatch = useDispatch()
 
 
   const [formData, setFormData] = useState({
@@ -15,35 +20,44 @@ const Login = ({ loginUser, loggedIn }) => {
   })
 
   useEffect(() => {
-    if (loggedIn) {
-      navigate("/home")
+    if (userStatus === 'succeeded') {
+      navigate('/home')
     }
-  }, [loggedIn, navigate])
+  }, [userStatus, navigate])
 
   const handleChange = (e) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  // function handleSubmit(e) {
+  //   e.preventDefault();
 
+  //   const strongParams = {
+  //     ...formData
+  //   }
+
+  //   fetch(baseUrl + '/login', {
+  //     method: "POST",
+  //     headers,
+  //     body: JSON.stringify(strongParams)
+  //   })
+  //     .then(resp => resp.json())
+  //     .then(data => {
+  //       //login user
+  //       loginUser(data.user);
+  //       localStorage.setItem('jwt', data.token)
+  //       navigate("/home")
+  //     })
+  // }
+
+  const handleLogInSubmit = e => {
+    e.preventDefault();
     const strongParams = {
       ...formData
     }
-
-    fetch(baseUrl + '/login', {
-      method: "POST",
-      headers,
-      body: JSON.stringify(strongParams)
-    })
-      .then(resp => resp.json())
-      .then(data => {
-        //login user
-        loginUser(data.user);
-        localStorage.setItem('jwt', data.token)
-        navigate("/home")
-      })
+    dispatch(logInFetch(strongParams))
+    navigate('/home')
   }
 
   return (
@@ -72,7 +86,7 @@ const Login = ({ loginUser, loggedIn }) => {
         className="login-btn"
         type="submit"
         value="Login"
-        onClick={e => handleSubmit(e)}
+        onClick={e => handleLogInSubmit(e)}
       >
         Login
       </button>
