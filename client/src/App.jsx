@@ -9,39 +9,9 @@ import Forms from "./components/User/Forms";
 // import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from "react-redux";
 import { verifyLoggedIn } from "./components/User/userSlice";
-import { userLoggedIn } from "./components/User/userSlice";
+
 
 const App = () => {
-  // const [currentUser, setCurrentUser] = useState({});
-  // const [loggedIn, setLoggedIn] = useState(false);
-
-  // function loginUser(user) {
-  //   setCurrentUser(user);
-  //   setLoggedIn(user);
-  // }
-
-  // function logoutUser() {
-  //   setCurrentUser({});
-  //   setLoggedIn(false);
-  //   localStorage.removeItem('jwt');
-  // }
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('jwt')
-  //   if (token && !loggedIn) {
-  //     // fetch to rails backend
-  //     fetch(baseUrl + '/get-current-user', {
-  //       method: "GET",
-  //       headers: {
-  //         ...headers,
-  //         ...getToken()
-  //       }
-  //     })
-  //       .then(resp => resp.json())
-  //       .then(user => loginUser(user))
-  //     // setLoggedIn(true);
-  //   }
-  // }, [loggedIn])
 
   const userStatus = useSelector(state => state.user.status)
   const dispatch = useDispatch()
@@ -69,12 +39,6 @@ const App = () => {
           path="/profile"
           element={<Profile />}
         />
-        {/* <Route
-          path="/login"
-          element={<Login
-          />
-          }
-        /> */}
         <Route
           path="/signup"
           element={<Forms />}
