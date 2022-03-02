@@ -1,65 +1,65 @@
 import './styles/App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import NavBar from './components/Navigation/NavBar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from "./components/Home/Home";
 import Profile from "./components/User/Profile";
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
-import { baseUrl, headers, getToken } from "./Globals";
-
+// import { baseUrl, headers, getToken } from "./Globals";
+import { useSelector, useDispatch } from "react-redux";
+import { verifyLoggedIn } from "./components/User/userSlice";
+import { userLoggedIn } from "./components/User/userSlice";
 
 const App = () => {
-  const [currentUser, setCurrentUser] = useState({});
-  const [loggedIn, setLoggedIn] = useState(false);
+  // const [currentUser, setCurrentUser] = useState({});
+  // const [loggedIn, setLoggedIn] = useState(false);
 
-  function loginUser(user) {
-    setCurrentUser(user);
-    setLoggedIn(user);
-  }
+  // function loginUser(user) {
+  //   setCurrentUser(user);
+  //   setLoggedIn(user);
+  // }
 
-  function logoutUser() {
-    setCurrentUser({});
-    setLoggedIn(false);
-    localStorage.removeItem('jwt');
-  }
+  // function logoutUser() {
+  //   setCurrentUser({});
+  //   setLoggedIn(false);
+  //   localStorage.removeItem('jwt');
+  // }
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem('jwt')
+  //   if (token && !loggedIn) {
+  //     // fetch to rails backend
+  //     fetch(baseUrl + '/get-current-user', {
+  //       method: "GET",
+  //       headers: {
+  //         ...headers,
+  //         ...getToken()
+  //       }
+  //     })
+  //       .then(resp => resp.json())
+  //       .then(user => loginUser(user))
+  //     // setLoggedIn(true);
+  //   }
+  // }, [loggedIn])
+
+  const userStatus = useSelector(state => state.user.status)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const token = localStorage.getItem('jwt')
-    if (token && !loggedIn) {
-      // fetch to rails backend
-      fetch(baseUrl + '/get-current-user', {
-        method: "GET",
-        headers: {
-          ...headers,
-          ...getToken()
-        }
-      })
-        .then(resp => resp.json())
-        .then(user => loginUser(user))
-      // setLoggedIn(true);
+    if (token && userStatus === 'idle') {
+      dispatch(verifyLoggedIn(token))
     }
-  }, [loggedIn])
-
+  }, [userStatus, dispatch])
 
   return (
     <Router>
-      <NavBar
-        loggedIn={loggedIn}
-        loginUser={loginUser}
-        logoutUser={logoutUser}
-        currentUser={currentUser}
-      />
+      <NavBar />
       <Routes>
         <Route
           path='/home'
-          element={<Home
-            loggedIn={loggedIn}
-            loginUser={loginUser}
-            logoutUser={logoutUser}
-            currentUser={currentUser}
-          />
-          }
+          element={<Home />}
         />
         <Route
           path="/"
@@ -77,13 +77,7 @@ const App = () => {
         /> */}
         <Route
           path="/signup"
-          element={<Forms
-            loggedIn={loggedIn}
-            loginUser={loginUser}
-            logoutUser={logoutUser}
-            currentUser={currentUser}
-          />
-          }
+          element={<Forms />}
         />
       </Routes>
     </Router>
