@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { headers } from "../../Globals";
 import { useDispatch, useSelector } from "react-redux";
-import { userLoggedIn, userLogInFetch } from "./userSlice";
+import { userLoggedIn, userLogInFetch, userFetchSucceeded } from "./userSlice";
 import { useNavigate } from "react-router-dom";
 import ErrorAlert from "../../errorHandling/ErrorAlert";
 import { setErrors } from "../../errorHandling/errorsSlice";
@@ -9,16 +9,17 @@ import { setErrors } from "../../errorHandling/errorsSlice";
 
 const Signup = () => {
   const errors = useSelector(state => state.errors.entities)
-
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+
 
   const [formData, setFormData] = useState({
-    first_name: "",
-    last_name: "",
+    firstname: "",
+    lastname: "",
     username: "",
     password: ""
   })
+
+  let navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -29,8 +30,8 @@ const Signup = () => {
 
     const strongParams = {
       user: {
-        first_name: formData.first_name,
-        last_name: formData.last_name,
+        first_name: formData.firstname,
+        last_name: formData.lastname,
         username: formData.username,
         password: formData.password
       }
@@ -48,8 +49,9 @@ const Signup = () => {
               localStorage.setItem("jwt", data.token)
               dispatch(userLogInFetch(data.user))
               dispatch(userLoggedIn(true));
+              dispatch(userFetchSucceeded())
+              navigate('/home')
             })
-            .then(navigate('/'))
         } else {
           res.json().then(e => dispatch(setErrors(e)))
         }
@@ -59,7 +61,7 @@ const Signup = () => {
   return (
     <form
       id="signup"
-      onSubmit={handleSubmit}
+
     >
       <div>
         <label htmlFor="firstname"></label>
@@ -108,6 +110,7 @@ const Signup = () => {
       <button
         className="signup-btn"
         id="signUp"
+        onClick={e => handleSubmit(e)}
       >
         Create User
       </button>
