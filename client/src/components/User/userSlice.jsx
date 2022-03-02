@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 import { headers, getToken } from "../../Globals";
 import { setErrors } from "../../errorHandling/errorsSlice";
 
+
 export function logInFetch(strongParams) {
   return function (dispatch) {
-
     dispatch({ type: "users/userLoginLoading" });
     fetch('/login', {
       method: "POST",
@@ -19,7 +19,6 @@ export function logInFetch(strongParams) {
           res.json()
             .then(data => {
               localStorage.setItem('jwt', data.token)
-              console.log(data.user)
               dispatch(userLogInFetch(data.user))
               dispatch(setErrors([]))
               dispatch(userFetchSucceeded())
@@ -48,7 +47,7 @@ export function verifyLoggedIn() {
         if (res.ok) {
           res.json()
             .then(data => {
-              dispatch(userLogInFetch(data.user))
+              dispatch(userLogInFetch(data))
               dispatch(setErrors([]))
               dispatch(userFetchSucceeded())
             })
