@@ -3,8 +3,8 @@ import IngredientsCategoryCard from "./IngredientsCategoryCard";
 
 const IngredientsContainer = ({ allIngredients }) => {
 
-  const categories = [...new Set(allIngredients.map(ingredient => ingredient.category))]
 
+  const categories = [...new Set(allIngredients.map(ingredient => ingredient.category))]
 
   const renderCategoryCards = categories.map(category => {
     const categoryIngredients = allIngredients.filter(ingredient => ingredient.category === category)
