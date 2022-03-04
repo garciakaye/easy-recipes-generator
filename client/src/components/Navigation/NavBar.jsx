@@ -6,12 +6,13 @@ import { useNavigate } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Login from "../User/Login";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogout, userLogoutStatus, userLoggedIn } from "../User/userSlice";
+import { userLogout, userLogoutStatus } from "../User/userSlice";
 
 
 const NavBar = () => {
   const userStatus = useSelector(state => state.user.status)
-  const user = useSelector(state => state.user.entities[0])
+
+
 
   const dispatch = useDispatch()
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const NavBar = () => {
     localStorage.removeItem('jwt')
     dispatch(userLogoutStatus())
   }
-  console.log(userStatus)
+
   return (
     <nav id="navbar">
       {userStatus === 'succeeded' ? (
