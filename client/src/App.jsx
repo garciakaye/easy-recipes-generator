@@ -6,9 +6,9 @@ import Home from "./components/Home/Home";
 import Profile from "./components/User/Profile";
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
-// import { baseUrl, headers, getToken } from "./Globals";
 import { useSelector, useDispatch } from "react-redux";
 import { verifyLoggedIn } from "./components/User/userSlice";
+import { userIngredientsGet } from "./components/Ingredients/userIngredientsSlice";
 
 
 const App = () => {
