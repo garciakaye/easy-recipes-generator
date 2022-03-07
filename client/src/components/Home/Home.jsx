@@ -1,20 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import '../../styles/home.css';
 import { Row, Col } from "react-bootstrap";
-// import RecipesContainer from "../Recipes/RecipesContainer";
-// import { useNavigate } from 'react-router-dom';
 import IngredientsContainer from "../Ingredients/IngredientsContainer";
 
 
 
 const Home = () => {
-  const [allIngredients, setAllIngredients] = useState([])
-
-  useEffect(() => {
-    fetch('/ingredients')
-      .then((r) => r.json())
-      .then((ingredient) => setAllIngredients(ingredient))
-  }, [])
 
 
   return (
@@ -26,7 +17,7 @@ const Home = () => {
         </Col>
         <Col className="border" xs={3}>
           My Pantry
-          <IngredientsContainer allIngredients={allIngredients} />
+          <IngredientsContainer />
         </Col>
       </Row>
     </div>
