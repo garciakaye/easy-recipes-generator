@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Ingredient from "./Ingredient";
 
-
 const IngredientsCategoryCard = ({ name, ingredients }) => {
+
+
   const [showMore, setShowMore] = useState(false);
 
-  const renderIngredients = ingredients.map((ingredient, index) => <Ingredient key={index} ingredient={ingredient} />)
+  const renderIngredients = ingredients.map((ingredient) => <Ingredient key={ingredient.id} ingredient={ingredient} />)
 
   const someIngred = renderIngredients.splice(11)
 
