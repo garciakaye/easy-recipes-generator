@@ -8,20 +8,20 @@ import About from "./components/About/About";
 import Forms from "./components/User/Forms";
 import { useSelector, useDispatch } from "react-redux";
 import { verifyLoggedIn } from "./components/User/userSlice";
-import { userIngredientsGet } from "./components/Ingredients/userIngredientsSlice";
 
 
 const App = () => {
 
-  const userStatus = useSelector(state => state.user.status)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
   const dispatch = useDispatch()
+
 
   useEffect(() => {
     const token = localStorage.getItem('jwt')
-    if (token && userStatus === 'idle') {
+    if (token && !isLoggedIn) {
       dispatch(verifyLoggedIn(token))
     }
-  }, [userStatus, dispatch])
+  }, [isLoggedIn, dispatch])
 
   return (
     <Router>
