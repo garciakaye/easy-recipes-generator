@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import '../../styles/forms.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import { logInFetch, userLoggedIn } from "./userSlice";
+import { login } from "./userSlice";
 
 
 
 const Login = () => {
 
-  const userStatus = useSelector(state => state.user.status)
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
 
   let navigate = useNavigate()
   const dispatch = useDispatch()
@@ -20,43 +20,20 @@ const Login = () => {
   })
 
   useEffect(() => {
-    if (userStatus === 'succeeded') {
+    if (isLoggedIn) {
       navigate('/home')
     }
-  }, [userStatus, navigate])
+  }, [isLoggedIn, navigate])
 
   const handleChange = (e) => {
     e.preventDefault();
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   const strongParams = {
-  //     ...formData
-  //   }
-
-  //   fetch(baseUrl + '/login', {
-  //     method: "POST",
-  //     headers,
-  //     body: JSON.stringify(strongParams)
-  //   })
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       //login user
-  //       loginUser(data.user);
-  //       localStorage.setItem('jwt', data.token)
-  //       navigate("/home")
-  //     })
-  // }
 
   const handleLogInSubmit = e => {
     e.preventDefault();
-    const strongParams = {
-      ...formData
-    }
-    dispatch(logInFetch(strongParams))
+    dispatch(login(formData))
     navigate('/home')
   }
 
