@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { headers } from "../../Globals";
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { userLoggedIn, userLogInFetch, userFetchSucceeded } from "./userSlice";
+import { signup } from "./userSlice";
 import { useNavigate } from "react-router-dom";
-import ErrorAlert from "../../errorHandling/ErrorAlert";
-import { setErrors } from "../../errorHandling/errorsSlice";
 
 
 const Signup = () => {
-  const errors = useSelector(state => state.errors.entities)
+
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
 
@@ -19,44 +19,29 @@ const Signup = () => {
     password: ""
   })
 
-  let navigate = useNavigate()
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    const strongParams = {
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const { firstName, lastName, username, password } = formData
+    dispatch(signup({
       user: {
-        first_name: formData.firstname,
-        last_name: formData.lastname,
-        username: formData.username,
-        password: formData.password
+        first_name: firstName,
+        last_name: lastName,
+        username,
+        password
       }
-    }
-
-    fetch("/users", {
-      method: "POST",
-      headers: headers,
-      body: JSON.stringify(strongParams)
-    })
-      .then(res => {
-        if (res.ok) {
-          res.json()
-            .then(data => {
-              localStorage.setItem("jwt", data.token)
-              dispatch(userLogInFetch(data.user))
-              dispatch(userLoggedIn(true));
-              dispatch(userFetchSucceeded())
-              navigate('/home')
-            })
-        } else {
-          res.json().then(e => dispatch(setErrors(e)))
-        }
-      })
+    }))
   }
+
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/home')
+    }
+  }, [isLoggedIn, navigate])
 
   return (
     <form
@@ -69,7 +54,7 @@ const Signup = () => {
           type="text"
           name="firstname"
           placeholder="First Name"
-          value={formData.first_name}
+          value={formData.firstname}
           id="firstname"
           onChange={handleInputChange}
         />
@@ -80,7 +65,7 @@ const Signup = () => {
           type="text"
           name="lastname"
           placeholder="Last Name"
-          value={formData.last_name}
+          value={formData.lastname}
           id="lastname"
           onChange={handleInputChange}
         />
