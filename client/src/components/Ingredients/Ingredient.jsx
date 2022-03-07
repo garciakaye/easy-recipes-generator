@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { userIngredientRemove, userIngredientAdd } from "./userIngredientsSlice";
+import { getUserIngredients } from "../User/userSlice";
 import { baseUrl, headers } from "../../Globals";
 
 const Ingredient = ({ ingredient }) => {
-  // const user = useSelector((state) => state.user.entities[0])
 
-  // const userIngred = useSelector((state) => state)
+  // const ingredientIds = useSelector((state) => state.user.ingredientIds)
 
-  // const userIngredients = userIngred.userIngredients.entities
+  // const dispatch = useDispatch()
+
+  // useEffect(() => {
+  //   dispatch(getUserIngredients())
+  // }, [dispatch])
+
+
+
+
+
   // const dispatch = useDispatch();
 
   // const handleUserIngredientAdd = () => {
