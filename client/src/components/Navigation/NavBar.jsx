@@ -2,30 +2,27 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { GiMeal } from "react-icons/gi";
 import { CgProfile } from "react-icons/cg";
-import { useNavigate } from 'react-router-dom';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Login from "../User/Login";
 import { useSelector, useDispatch } from "react-redux";
-import { userLogout, userLogoutStatus } from "../User/userSlice";
+import { clearUser } from "../User/userSlice";
 
 
 const NavBar = () => {
-  const userStatus = useSelector(state => state.user.status)
-
-
+  const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+  const username = useSelector(state => state.user.username)
 
   const dispatch = useDispatch()
-  const navigate = useNavigate();
+
 
   const handleLogOut = () => {
-    dispatch(userLogout([]))
     localStorage.removeItem('jwt')
-    dispatch(userLogoutStatus())
+    dispatch(clearUser())
   }
 
   return (
     <nav id="navbar">
-      {userStatus === 'succeeded' ? (
+      {isLoggedIn ? (
         <>
           <nav>
             <Link to="/"><GiMeal /></Link>
@@ -34,7 +31,7 @@ const NavBar = () => {
             <Link className="link" to="/" onClick={handleLogOut}>Logout</Link>
           </nav>
           <nav>
-            <Link to="/profile"><CgProfile /></Link>
+            <Link to="/profile"><CgProfile />{username}</Link>
           </nav>
         </>
       ) : (
