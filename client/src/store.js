@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userIngredientsReducer from "./components/Ingredients/userIngredientsSlice";
+import ingredientsReducer from "./components/Ingredients/IngredientsSlice";
 import userReducer from "./components/User/userSlice";
 import errorsReducer from './errorHandling/errorsSlice';
 import recipesReducer from "./components/Recipes/recipesSlice";
@@ -7,7 +7,7 @@ import recipesReducer from "./components/Recipes/recipesSlice";
 
 const store = configureStore({
   reducer: {
-    userIngredients: userIngredientsReducer,
+    ingredients: ingredientsReducer,
     user: userReducer,
     errors: errorsReducer,
     recipes: recipesReducer
