@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action only: [:index, :show,]
+  before_action only: [:index, :show]
 
 
   # GET /ingredients
@@ -34,10 +34,11 @@ class IngredientsController < ApplicationController
   #   end
   # end
 
-  # # DELETE /ingredients/1
-  # def destroy
-  #   @ingredient.destroy
-  # end
+  # DELETE /ingredients/1
+  def destroy
+    @user_ingredient = UserIngredient.find_by(ingredient_id: params[:id], user_id: params[:user_id])
+    @user_ingredient.destroy
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
