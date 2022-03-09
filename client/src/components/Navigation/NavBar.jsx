@@ -5,7 +5,7 @@ import { CgProfile } from "react-icons/cg";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Login from "../User/Login";
 import { useSelector, useDispatch } from "react-redux";
-import { clearUser } from "../User/userSlice";
+import { clearUser } from "../../features/userSlice";
 
 
 const NavBar = () => {
