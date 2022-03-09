@@ -3,7 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Ingredient from "./Ingredient";
 
 const IngredientsCategoryCard = ({ name, ingredients }) => {
-
+  // , myIngredients = []
 
   const [showMore, setShowMore] = useState(false);
 
