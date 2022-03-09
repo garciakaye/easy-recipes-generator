@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import IngredientsCategoryCard from "./IngredientsCategoryCard";
-import { getAllIngredients } from "./IngredientsSlice";
+import { getAllIngredients } from "../../features/IngredientsSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 
@@ -32,6 +32,7 @@ const IngredientsContainer = () => {
       key={category}
       name={category}
       ingredients={categoryIngredients}
+    // myIngredients={myIngredients}
     />
   })
 
