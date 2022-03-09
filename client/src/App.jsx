@@ -7,7 +7,7 @@ import Profile from "./components/User/Profile";
 import About from "./components/About/About";
 import Forms from "./components/User/Forms";
 import { useSelector, useDispatch } from "react-redux";
-import { verifyLoggedIn } from "./components/User/userSlice";
+import { verifyLoggedIn } from "./features/userSlice";
 
 
 const App = () => {
