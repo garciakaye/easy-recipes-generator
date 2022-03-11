@@ -40,7 +40,7 @@ const NavBar = () => {
             <Link className="link" to="/">Easy Recipes Generator</Link>
           </nav>
           <Dropdown>
-            <Dropdown.Toggle>Login</Dropdown.Toggle>
+            <Dropdown.Toggle id="login-dropdown">Login</Dropdown.Toggle>
             <Dropdown.Menu>
               <Login />
             </Dropdown.Menu>
