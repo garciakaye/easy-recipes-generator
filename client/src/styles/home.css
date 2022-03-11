@@ -1,27 +1,16 @@
-/* .home-container {
-  background-color:aquamarine;
-  position: relative;
-  min-height: 300px;
-  min-width: 900px;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-    0 10px 10px rgba(0,0,0,0.22);
-  overflow: hidden;
-  
-} */
-
 .home-container {
   padding: 0px 12px 0px 12px;
   margin: 8px;
 }
 
-.border {
+.home-col {
+  border: 1px;
+  border-style: groove;
+  border-color: var(--deeppurple);
+  border-radius: 5px;
   overflow: scroll;
   height: 100vh;
-  border-radius: 10px;
+  text-align: center;
 }
 
 .ingredients-btns {
@@ -33,8 +22,8 @@
   font-size: 12px;
   line-height: 15px;
   text-decoration: none;
-  background-color: rgb(222, 231, 228);
-  color: rgb(167, 170, 170);
+  color: var(--deeppurple);
+  background-color: var(--lightgreen)
 }
 
 .ingredients-btns-active {
@@ -47,18 +36,52 @@
   font-weight: 700;
   line-height: 15px;
   text-decoration: none;
-  background-color: rgb(240, 237, 101);
+  background-color: var(--deeppurple);
   color: rgb(167, 170, 170);
+  font-weight: bolder;
 }
 .ingred-span{
   text-align: center;
 }
 
-.card {
-  margin-bottom: 20px;
+.card-border.card {
+  border: 1px;
+  border-style: groove;
+  border-color: var(--deeppurple);
+  border-radius: 5px;
+  margin: 20px 0px 20px 0px;
   text-align: center;
-  /* overflow-y: scroll;
-  height: 20rem; */
+}
+
+.headers.card-header {
+  font-weight: bolder;
+  background-color: var(--lightgreen)
+}
+
+.recipe-headers.card-header {
+  font-weight: bolder;
+  background-color: var(--lightgreen);
+  min-height: 70px
+}
+
+img.card-img-top {
+  padding: 8px 8px 0px 8px;
+}
+
+p.missed-ingredients.card-text{
+  margin-bottom: 1px;
+  font-size: 14px
+}
+
+.my-pantry {
+  font-weight: bolder;
+  font-size: 20px;
+  color: var(--deeppurple);
+  padding-bottom: .6em;
+}
+
+.show-btn {
+  float: right;
 }
 
 .recipes-container {
@@ -66,4 +89,8 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+.redirect-to-recipe {
+  float: right;
 }
