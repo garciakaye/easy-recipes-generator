@@ -1,16 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 // import { getUserIngredients } from "../../features/userSlice";
 import { baseUrl, headers } from "../../Globals";
 import { ingredientAdd, ingredientRemove } from "../../features/userSlice";
 
+
 const Ingredient = ({ ingredient }) => {
   const myIngredients = useSelector((state) => state.user.ingredients);
   const user = useSelector((state) => state.user)
-  // console.log(myIngredients)
 
+  // 
+  const initLoaded = useRef(false);
 
-  // const [findUserIngredient, setFindUserIngredient] = useState(myIngredients.find(({ ingredient_id }) => ingredient_id === ingredient.id))
+  const [findUserIngredient, setFindUserIngredient] = useState(myIngredients.find(myIngredient => {
+    return myIngredient.id === ingredient.id;
+  }));
+
+  useEffect(() => {
+    if (user.id !== -1 && !initLoaded.current) {
+      const userIngredient = myIngredients.find(myIngredient => {
+        return myIngredient.id === ingredient.id;
+      })
+      setFindUserIngredient(userIngredient);
+      initLoaded.current = true;
+    }
+  }, [user, ingredient.id, myIngredients]);
 
   const dispatch = useDispatch()
 
@@ -28,27 +42,25 @@ const Ingredient = ({ ingredient }) => {
       body: JSON.stringify(userIngredient)
     })
     const data = await res.json();
-    console.log(data)
-    // dispatch(ingredientAdd(data));
+    setFindUserIngredient(data.ingredient)
+    dispatch(ingredientAdd(data.ingredient));
   }
 
-  const isIngredientInList = myIngredients.find(myIngredient => myIngredient.id === ingredient.id);
+
 
 
   const handleUserIngredientRemove = async () => {
-    await fetch(baseUrl + `/users/${user.id}/ingredients/${isIngredientInList.id}`, {
+    await fetch(baseUrl + `/users/${user.id}/ingredients/${findUserIngredient.id}`, {
       method: "DELETE",
     });
+    setFindUserIngredient(null);
+    dispatch(ingredientRemove(findUserIngredient.id));
 
-    // dispatch(ingredientRemove(myIngredients.id));
   }
 
   return (
     <>
-      {/* <a href="#" className="ingredients-btns" >
-        {ingredient.name}
-      </a> */}
-      {isIngredientInList ?
+      {findUserIngredient ?
         <a href="#/" className="ingredients-btns-active" onClick={handleUserIngredientRemove}>{ingredient.name} </a>
         :
         <a href="#/" className="ingredients-btns" onClick={handleUserIngredientAdd}>{ingredient.name} </a>
