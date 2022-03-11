@@ -3,6 +3,7 @@ import '../../styles/forms.css';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../features/userSlice";
+import Form from 'react-bootstrap/Form'
 
 
 
@@ -38,9 +39,9 @@ const Login = () => {
   }
 
   return (
-    <form id="login">
-      <div>
-        <label htmlFor="username"></label>
+    <Form className="login-form" onSubmit={handleLogInSubmit}>
+      <Form.Group>
+        <Form.Label htmlFor="username"></Form.Label>
         <input
           type="text"
           name="username"
@@ -48,9 +49,9 @@ const Login = () => {
           value={formData.username}
           onChange={handleChange}
         />
-      </div>
-      <div>
-        <label htmlFor="password"></label>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label htmlFor="password"></Form.Label>
         <input
           type="password"
           name="password"
@@ -58,16 +59,17 @@ const Login = () => {
           value={formData.password}
           onChange={handleChange}
         />
-      </div>
-      <button
+      </Form.Group>
+      <input className="login-btn" type="submit" value="Login" />
+      {/* <button
         className="login-btn"
         type="submit"
         value="Login"
         onClick={e => handleLogInSubmit(e)}
       >
         Login
-      </button>
-    </form>
+      </button> */}
+    </Form>
   );
 };
 
