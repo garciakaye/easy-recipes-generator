@@ -1,25 +1,35 @@
-// import React from 'react';
-// import Card from 'react-bootstrap/Card';
-// import { CgExternal } from "react-icons/cg";
+import React, { useState } from 'react';
+import Card from 'react-bootstrap/Card';
+import { CgExternal } from "react-icons/cg";
+import { shoppingListAdd } from "../../features/userSlice";
+import { useDispatch } from "react-redux";
 
-// const RecipesCard = ({ recipe }) => {
+const RecipesCard = ({ recipe }) => {
+
+  const dispatch = useDispatch();
 
 
-//   return (
-//     <Card className="recipes-card" style={{ width: '18rem' }}>
-//       <Card.Img variant="top" src={recipe.image} />
-//       <Card.Body>
-//         <Card.Title>{recipe.title}</Card.Title>
-//         {recipe.missedIngredients.map((ingredient, index) => {
-//           return <Card.Text key={index}>
-//             {ingredient.name}
-//           </Card.Text>
-//         })}
-//         <a target="_blank" rel="noreferrer" href={recipe.sourceUrl}><CgExternal /></a>
-//       </Card.Body>
-//     </Card >
-//   );
-// };
+  const addToShoppingList = (ingredientName) => {
+    dispatch(shoppingListAdd(ingredientName))
+  }
 
-// export default RecipesCard;
+  return (
+    <Card className="card-border" style={{ width: '23em' }} >
+      <Card.Header className="recipe-headers">
+        {recipe.title}
+        <a className="redirect-to-recipe" target="_blank" rel="noreferrer" href={recipe.sourceUrl}><CgExternal /></a>
+      </Card.Header>
+      <Card.Img variant="top" src={recipe.image} />
+      <Card.Body>
+        {recipe.missedIngredients.map((ingredient, index) => {
+          return <Card.Text className="missed-ingredients" key={index} onClick={() => addToShoppingList(ingredient.name)}>
+            {ingredient.name}
+          </Card.Text>
+        })}
+      </Card.Body>
+    </Card >
+  );
+};
+
+export default RecipesCard;
 
