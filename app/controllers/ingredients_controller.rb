@@ -37,7 +37,10 @@ class IngredientsController < ApplicationController
   # DELETE /ingredients/1
   def destroy
     @user_ingredient = UserIngredient.find_by(ingredient_id: params[:id], user_id: params[:user_id])
+    if @user_ingredient.present?
     @user_ingredient.destroy
+    end
+    # render json: {}
   end
 
   private
