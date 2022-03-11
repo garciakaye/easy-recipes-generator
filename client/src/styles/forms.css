@@ -4,12 +4,12 @@
 	flex-direction: row;
 	overflow: hidden;
 	background-color: white;
-	/* border-radius: 20%; */
 	background-image: url('../assets/greenpurple.png');
 	background-repeat: no-repeat;
 	background-size: cover;
-	height: 91vh;
+	height: 92vh;
 	opacity: 1;
+	
 }
 
 div.login-signup-card  {
@@ -18,62 +18,11 @@ div.login-signup-card  {
 	vertical-align: middle;
 	background: linear-gradient(to bottom, var(--lightgreen), var(--mywhite));
 	opacity: 0.9;
+	text-align: center;
 }
 
 
-
-/* .login-signup {
-  background-color: var(--mywhite);
-	border-radius: 10px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			0 10px 10px rgba(0,0,0,0.22);
-	position: relative;
-	overflow: hidden;
-	min-height: 400px;
-  justify-content: center;
-  flex-direction: column;
-} */
-
-/* form#login {
-	background-color: var(--brightlime);
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
-} */
-
-
-/* .form-container {
-	position: absolute;
-	top: 0;
-	height: 100%;
-} */
-
-/* .sign-in-container {
-	left: 0;
-	width: 50%;
-	z-index: 2;
-} */
-
-/* .signup-form {
-	position: absolute;
-	background:linear-gradient(to right, var(--brightlime), var(--yellowgreen));
-	background-repeat: no-repeat;
-	background-size: cover;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 40px;
-	text-align: center;
-	top: 0;
-	height: 100%;
-	width: 50%;
-} */
-
-/* .signup-right {
-	right: 0;
-} */
+.form-label {
+	/* justify-content: space-evenly; */
+	padding: 10px 10px 10px 0px;
+}
