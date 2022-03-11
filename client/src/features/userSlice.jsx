@@ -10,7 +10,8 @@ const initialState = {
   username: '',
   isLoggedIn: false,
   status: 'idle',
-  ingredients: []
+  ingredients: [],
+  shoppingList: []
 }
 
 const userSlice = createSlice({
@@ -33,6 +34,7 @@ const userSlice = createSlice({
       if (action.payload.user) {
         const { id, firstName, lastName, username, ingredients } = action.payload.user
         state = {
+          ...state,
           id,
           firstName,
           lastName,
@@ -40,7 +42,7 @@ const userSlice = createSlice({
           status: 'succeeded',
           isLoggedIn: true,
           errors: [],
-          ingredients
+          ingredients,
         }
         localStorage.setItem("current_user", state);
         return state;
@@ -50,23 +52,15 @@ const userSlice = createSlice({
       return initialState
     },
     ingredientAdd(state, action) {
-      const newIngredientsList = state.ingredients;
-      newIngredientsList.push({
-        user_id: action.payload.user_id,
-        ingredient_id: action.payload.ingredient_id
-      })
       return {
         ...state,
-        ingredients: newIngredientsList
+        ingredients: [...state.ingredients, action.payload]
       }
     },
     ingredientRemove(state, action) {
-      if (state.ingredients.find(ingred => ingred.id === action.payload)) {
-        const newIngredientsList = state.ingredients.filter(ingred => ingred.id !== action.payload);
-        return {
-          ...state,
-          ingredients: newIngredientsList
-        }
+      return {
+        ...state,
+        ingredients: [...state.ingredients].filter(ingred => ingred.id !== action.payload)
       }
     },
     setUserIngredients(state, action) {
@@ -74,6 +68,12 @@ const userSlice = createSlice({
         ...state,
         ingredients: action.payload,
         status: 'idle'
+      }
+    },
+    shoppingListAdd(state, action) {
+      return {
+        ...state,
+        shoppingList: [...state.shoppingList, action.payload]
       }
     }
   },
@@ -87,7 +87,8 @@ export const {
   clearUser,
   setUserIngredients,
   ingredientAdd,
-  ingredientRemove
+  ingredientRemove,
+  shoppingListAdd
 } = userSlice.actions;
 
 export function login(strongParams) {
