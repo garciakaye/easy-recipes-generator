@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Card from 'react-bootstrap/Card';
 import Ingredient from "./Ingredient";
+import { AiOutlineArrowDown } from "react-icons/ai"
+import { AiOutlineArrowUp } from "react-icons/ai"
 
 const IngredientsCategoryCard = ({ name, ingredients }) => {
-  // , myIngredients = []
 
   const [showMore, setShowMore] = useState(false);
 
@@ -13,14 +14,16 @@ const IngredientsCategoryCard = ({ name, ingredients }) => {
 
 
   return (
-    <Card border="light">
-      <Card.Header>{name}</Card.Header>
+    <Card className="card-border">
+      <Card.Header className="headers">{name}</Card.Header>
       <Card.Body>
+        <Card.Title>
+          <div className="show-btn" onClick={() => setShowMore(!showMore)}>
+            {showMore ? <AiOutlineArrowUp /> : <AiOutlineArrowDown />}
+          </div>
+        </Card.Title>
         <Card.Text className="ingred-span">
           {showMore ? someIngred : renderIngredients}
-          <button onClick={() => setShowMore(!showMore)}>
-            {showMore ? "Show less" : "Show more"}
-          </button>
         </Card.Text>
       </Card.Body>
     </Card>
