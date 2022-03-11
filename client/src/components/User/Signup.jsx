@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../features/userSlice";
 import { useNavigate } from "react-router-dom";
+import Form from 'react-bootstrap/Form'
 
 
 const Signup = () => {
@@ -44,12 +45,9 @@ const Signup = () => {
   }, [isLoggedIn, navigate])
 
   return (
-    <form
-      id="signup"
-
-    >
-      <div>
-        <label htmlFor="firstname"></label>
+    <Form className="signup-form" onSubmit={handleSubmit}>
+      <Form.Group>
+        <Form.Label htmlFor="firstname"></Form.Label>
         <input
           type="text"
           name="firstname"
@@ -58,9 +56,9 @@ const Signup = () => {
           id="firstname"
           onChange={handleInputChange}
         />
-      </div>
-      <div>
-        <label htmlFor="lastname"></label>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label htmlFor="lastname"></Form.Label>
         <input
           type="text"
           name="lastname"
@@ -69,9 +67,9 @@ const Signup = () => {
           id="lastname"
           onChange={handleInputChange}
         />
-      </div>
-      <div>
-        <label htmlFor="username"></label>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label htmlFor="username"></Form.Label>
         <input
           type="text"
           name="username"
@@ -80,9 +78,9 @@ const Signup = () => {
           id="username"
           onChange={handleInputChange}
         />
-      </div>
-      <div>
-        <label htmlFor="password"></label>
+      </Form.Group>
+      <Form.Group>
+        <Form.Label htmlFor="password"></Form.Label>
         <input
           type="password"
           name="password"
@@ -91,15 +89,19 @@ const Signup = () => {
           id="password"
           onChange={handleInputChange}
         />
-      </div>
-      <button
+      </Form.Group>
+      <input
+        className="input-submit"
+        type="submit"
+        value="Create Account" />
+      {/* <button
         className="signup-btn"
         id="signUp"
         onClick={e => handleSubmit(e)}
       >
         Create User
-      </button>
-    </form>
+      </button> */}
+    </Form>
   );
 };
 
