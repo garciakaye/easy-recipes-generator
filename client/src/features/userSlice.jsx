@@ -36,8 +36,8 @@ const userSlice = createSlice({
         state = {
           ...state,
           id,
-          firstName,
-          lastName,
+          firstName: firstName,
+          latName: lastName,
           username,
           status: 'succeeded',
           isLoggedIn: true,
@@ -130,7 +130,8 @@ export function signup(user) {
     }).then((response) => response.json())
       .then((data) => {
         localStorage.setItem("jwt", data.token)
-        dispatch(setUser(data.user))
+        // dispatch(setUser(data.user))
+        dispatch(verifyLoggedIn(data.user))
       })
 
   }
