@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useSelector } from "react-redux";
 import RecipesCard from "./RecipesCard";
 import { apiUrlFindByIngredients } from "../../Globals";
+import ReactPaginate from 'react-paginate';
 
 
 
@@ -39,9 +40,19 @@ const RecipesContainer = () => {
   }
 
 
+
   return (
     <div className="recipes-container">
       {recipeList.results ? renderRecipeCards() : null}
+      {/* <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        // onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        // pageCount={pageCount}
+        previousLabel="< previous"
+        renderOnZeroPageCount={null}
+      /> */}
     </div>
   );
 };
