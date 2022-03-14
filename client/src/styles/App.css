@@ -71,7 +71,7 @@ hr, vl {
   float: left;
   display: flex;
   color: var(--deeppurple);
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
   padding: 8px;
   margin-left: 8px;
@@ -92,12 +92,40 @@ hr, vl {
   font-family: 'Quicksand', sans-serif;
 }
 
+
+
+.dd-login-btn {
+  background-color: var(--deeppurple);
+  color: var(--mywhite);
+  border-radius: 20px;
+  font-size: 10px;
+}
+
 a.dropdown-item {
   /* margin: 0px 0px 0px 0px ; */
   justify-content: space-evenly;
-  
 }
+
 
 #login-dropdown:hover {
 	border-bottom:2px solid var(--yellowgreen);
+}
+
+.list-card.card {
+  vertical-align: middle;
+  color: var(--deeppurple);
+  border: none;
+}
+
+div.list-group {
+  margin: 0px 600px 0px 600px;
+  text-align: center;
+  color: var(--deeppurple);
+  font-weight: bolder;
+  border: var(--limegreen)
+}
+
+div.list-group-item {
+  color: var(--deeppurple);
+  border-color: var(--brightlime);
 }

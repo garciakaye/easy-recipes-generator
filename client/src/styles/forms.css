@@ -26,3 +26,17 @@ div.login-signup-card  {
 	/* justify-content: space-evenly; */
 	padding: 10px 10px 10px 0px;
 }
+
+input.input-submit, input.login-btn {
+	margin-top: 10px;
+	background-color: var(--deeppurple);
+  color: var(--mywhite);
+  border-radius: 18px;
+  font-size: 16px;
+}
+
+.form-toggle {
+	padding-top: 15px;
+	font-size: smaller;
+	color: var(--deeppurple)
+}
