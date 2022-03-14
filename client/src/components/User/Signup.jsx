@@ -20,6 +20,11 @@ const Signup = () => {
     password: ""
   })
 
+  useEffect(() => {
+    if (isLoggedIn) {
+      navigate('/home')
+    }
+  }, [isLoggedIn, navigate])
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -27,15 +32,16 @@ const Signup = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    const { firstName, lastName, username, password } = formData
+    const { firstname, lastname, username, password } = formData
     dispatch(signup({
       user: {
-        first_name: firstName,
-        last_name: lastName,
+        first_name: firstname,
+        last_name: lastname,
         username,
         password
       }
     }))
+    navigate('/home')
   }
 
   useEffect(() => {
@@ -93,14 +99,8 @@ const Signup = () => {
       <input
         className="input-submit"
         type="submit"
-        value="Create Account" />
-      {/* <button
-        className="signup-btn"
-        id="signUp"
-        onClick={e => handleSubmit(e)}
-      >
-        Create User
-      </button> */}
+        value="Create Account"
+      />
     </Form>
   );
 };
