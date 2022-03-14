@@ -8,6 +8,7 @@ import About from "./components/About/About";
 import Forms from "./components/User/Forms";
 import { useSelector, useDispatch } from "react-redux";
 import { verifyLoggedIn } from "./features/userSlice";
+import ShoppingList from "./components/User/ShoppingList";
 
 
 const App = () => {
@@ -38,6 +39,10 @@ const App = () => {
         <Route
           path="/profile"
           element={<Profile />}
+        />
+        <Route
+          path="/shopping-list"
+          element={<ShoppingList />}
         />
         <Route
           path="/signup"
