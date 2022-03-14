@@ -20,7 +20,7 @@ const Forms = ({ loggedIn, logoutUser, loginUser, currentUser }) => {
               <FoodCarousel />
             </Card.Title>
             <Login loggedIn={loggedIn} loginUser={loginUser} logoutUser={logoutUser} currentUser={currentUser} />
-            <a href="#/" onClick={handleFormToggle}>Not yet a member?</a>
+            <a className="form-toggle" href="#/" onClick={handleFormToggle}>Not yet a member?</a>
           </Card.Body>
         </Card>
       ) : (
@@ -30,7 +30,7 @@ const Forms = ({ loggedIn, logoutUser, loginUser, currentUser }) => {
               <FoodCarousel />
             </Card.Title>
             <Signup loggedIn={loggedIn} logoutUser={logoutUser} />
-            <a href="#/" onClick={handleFormToggle}>Already have an account?</a>
+            <a className="form-toggle" href="#/" onClick={handleFormToggle}>Already have an account?</a>
           </Card.Body>
         </Card>
       )
