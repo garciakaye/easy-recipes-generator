@@ -61,14 +61,6 @@ const Login = () => {
         />
       </Form.Group>
       <input className="login-btn" type="submit" value="Login" />
-      {/* <button
-        className="login-btn"
-        type="submit"
-        value="Login"
-        onClick={e => handleLogInSubmit(e)}
-      >
-        Login
-      </button> */}
     </Form>
   );
 };
