@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :authorized, only: [:create]
-  before_action :set_user, only: [:show, :update, :destroy]
+  # before_action :set_user, only: [:show, :update, :destroy]
 
   # GET /users
   def index
@@ -36,9 +36,14 @@ class UsersController < ApplicationController
 
   # DELETE /users/1
   def destroy
-    @user.destroy
-    
-  end
+		set_user
+		if @user
+			@user.destroy
+			render json: {}
+	else
+			render json: {error: "user not found"}, status: :not_found
+	end
+	end
 
   private
     # Use callbacks to share common setup or constraints between actions.
