@@ -21,13 +21,21 @@ div.login-signup-card  {
 	text-align: center;
 }
 
+div.card-body {
+	padding: 0em;
+}
+
+div.fade.alert.alert-danger.show {
+	padding: 0rem;
+	margin-bottom: 0rem;
+}
 
 .form-label {
 	/* justify-content: space-evenly; */
 	padding: 10px 10px 10px 0px;
 }
 
-input.input-submit, input.login-btn {
+input.input-submit, input.login-btn, .delete-profile-btn {
 	margin-top: 10px;
 	background-color: var(--deeppurple);
   color: var(--mywhite);
