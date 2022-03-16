@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { signup } from "../../features/userSlice";
 import { useNavigate } from "react-router-dom";
-import Form from 'react-bootstrap/Form'
-
+import Form from 'react-bootstrap/Form';
+import ErrorAlert from "../../errorHandling/ErrorAlert";
 
 const Signup = () => {
+  const errors = useSelector(state => state.errors.entities[0])
+
 
   const isLoggedIn = useSelector(state => state.user.isLoggedIn)
+
 
   const navigate = useNavigate()
   const dispatch = useDispatch();
@@ -20,11 +23,6 @@ const Signup = () => {
     password: ""
   })
 
-  useEffect(() => {
-    if (isLoggedIn) {
-      navigate('/home')
-    }
-  }, [isLoggedIn, navigate])
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -41,7 +39,6 @@ const Signup = () => {
         password
       }
     }))
-    navigate('/home')
   }
 
   useEffect(() => {
@@ -52,6 +49,7 @@ const Signup = () => {
 
   return (
     <Form className="signup-form" onSubmit={handleSubmit}>
+      {errors ? <ErrorAlert errors={errors} /> : null}
       <Form.Group>
         <Form.Label htmlFor="firstname"></Form.Label>
         <input
