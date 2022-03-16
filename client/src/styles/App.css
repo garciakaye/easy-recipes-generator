@@ -111,10 +111,15 @@ a.dropdown-item {
 	border-bottom:2px solid var(--yellowgreen);
 }
 
-.list-card.card {
+.list-card.card, .profile-card.card {
+  /* display: flex; */
   vertical-align: middle;
   color: var(--deeppurple);
   border: none;
+}
+
+.profile-card.card {
+  margin-top: 70px;
 }
 
 div.list-group {
@@ -128,4 +133,8 @@ div.list-group {
 div.list-group-item {
   color: var(--deeppurple);
   border-color: var(--brightlime);
+}
+
+div.lottie-user{
+  margin-top: 120px;
 }
