@@ -30,7 +30,7 @@ const App = () => {
       <Routes>
         <Route
           path='/home'
-          element={<Home />}
+          element={isLoggedIn ? <Home /> : <About />}
         />
         <Route
           path="/"
@@ -38,11 +38,11 @@ const App = () => {
         />
         <Route
           path="/profile"
-          element={<Profile />}
+          element={isLoggedIn ? <Profile /> : <About />}
         />
         <Route
           path="/shopping-list"
-          element={<ShoppingList />}
+          element={isLoggedIn ? <ShoppingList /> : <About />}
         />
         <Route
           path="/signup"
