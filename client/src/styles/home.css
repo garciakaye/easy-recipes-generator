@@ -1,5 +1,5 @@
 .home-container {
-  padding: 30px 12px 0px 12px;
+  padding: 45px 12px 0px 12px;
   margin: 8px;
 }
 
@@ -71,6 +71,7 @@ img.card-img-top {
 p.missed-ingredients.card-text{
   margin-bottom: 1px;
   font-size: 10px;
+  text-align: center;
 }
 
 a.missed-ingredients {
@@ -83,6 +84,9 @@ a.missed-ingredients {
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 12px;
+  padding: 0px;
+  font-weight: bolder;
+  color: var(--deeppurple)
 }
 
 .my-pantry {
@@ -108,5 +112,38 @@ a.missed-ingredients {
 }
 
 p {
-  font-size: 15px;
+  font-size: 14px;
+}
+
+.ingred-count {
+  font-weight: bolder;
+}
+
+.pagination {
+  flex-direction: row;
+  justify-content: space-between;
+  list-style: none;
+  cursor: pointer;
+}
+
+.pagination a {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--brightgreen);
+  color: var(--deeppurple);
+}
+
+.pagination__link {
+  font-weight: bold;
+}
+
+.pagination__link--active a {
+  color: #fff;
+  background: var(--brightgreen);
+  font-weight: bolder;
+}
+
+.pagination__link--disabled a {
+  color: rgb(198, 197, 202);
+  border: 1px solid var(--deeppurple);
 }
