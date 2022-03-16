@@ -1,5 +1,5 @@
 class IngredientsController < ApplicationController
-  before_action only: [:index, :show]
+  # before_action only: [:index, :show]
 
 
   # GET /ingredients
