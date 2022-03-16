@@ -47,11 +47,13 @@ const NavBar = () => {
             <Link to="/"><GiMeal /></Link>
             <Link className="link" to="/home">Easy Recipes Generator</Link>
             <Link className="link" to="/shopping-list">Shopping List</Link>
+            {/* <Link className="link" to="/" onClick={handleLogOut}>Logout</Link> */}
           </nav>
           <nav>
             <Dropdown>
               <Dropdown.Toggle id="login-dropdown"><CgProfile />{username}</Dropdown.Toggle>
               <Dropdown.Menu>
+                <Link className="link" to="/profile">Profile</Link>
                 <Link className="link" to="/" onClick={handleLogOut}>Logout</Link>
               </Dropdown.Menu>
             </Dropdown>
