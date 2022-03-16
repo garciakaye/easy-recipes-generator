@@ -32,16 +32,16 @@ const userSlice = createSlice({
     },
     setUser(state, action) {
       if (action.payload.user) {
-        const { id, firstName, lastName, username, ingredients } = action.payload.user
+        const { id, first_name, last_name, username, ingredients } = action.payload.user
         state = {
           ...state,
           id,
-          firstName: firstName,
-          latName: lastName,
+          firstName: first_name,
+          lastName: last_name,
           username,
           status: 'succeeded',
           isLoggedIn: true,
-          errors: [],
+          // errors: [],
           ingredients,
         }
         localStorage.setItem("current_user", state);
@@ -107,13 +107,12 @@ export function login(strongParams) {
           res.json()
             .then(data => {
               localStorage.setItem('jwt', data.token)
-              // dispatch(setUser(data))
               dispatch(verifyLoggedIn(data))
             })
         } else {
           res.json().then(errors => {
             dispatch(userFetchRejected())
-            dispatch(setErrors(errors))
+            dispatch(setErrors(errors.errors))
           })
         }
       })
@@ -122,20 +121,27 @@ export function login(strongParams) {
 
 export function signup(user) {
   return (dispatch) => {
-    //dispatch signing up status
     fetch('/users', {
       method: "POST",
       headers: headers,
       body: JSON.stringify(user)
-    }).then((response) => response.json())
-      .then((data) => {
-        localStorage.setItem("jwt", data.token)
-        // dispatch(setUser(data.user))
-        dispatch(verifyLoggedIn(data.user))
-      })
-
+    }).then(res => {
+      if (res.ok) {
+        res.json()
+          .then(data => {
+            localStorage.setItem("jwt", data.token)
+            dispatch(verifyLoggedIn(data.user))
+          })
+      } else {
+        res.json().then(errors => {
+          dispatch(userFetchRejected())
+          dispatch(setErrors(errors.error))
+        })
+      }
+    })
   }
 }
+
 
 
 export function verifyLoggedIn() {
@@ -161,33 +167,6 @@ export function verifyLoggedIn() {
       })
   }
 }
-
-// export function getUserIngredients() {
-//   return (dispatch) => {
-//     dispatch({ type: "userIngredients/userIngredientsLoading" });
-//     fetch('/user_ingredients')
-//       .then((response) => response.json())
-//       .then((ingredients) => dispatch(setUserIngredients(ingredients)))
-//   }
-// }
-
-// const handleUserIngredientAdd = () => {
-//   const userIngredient = {
-//     user_id: user.id,
-//     ingredient_id: ingredient.id
-//   }
-//   fetch(baseUrl + "/user_ingredients", {
-//     method: "POST",
-//     headers,
-//     body: JSON.stringify(userIngredient)
-//   })
-//     .then(res => res.json())
-//     .then(data => {
-//       setFindUserIngredient(data)
-//       dispatch(userIngredientAdd(data))
-//     })
-// }
-
 
 export default userSlice.reducer;
 
