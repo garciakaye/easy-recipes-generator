@@ -12,6 +12,8 @@ const RecipesCard = ({ recipe }) => {
     dispatch(shoppingListAdd(ingredientName))
   }
 
+
+
   return (
     <Card className="card-border" style={{ width: '23em' }} >
       <Card.Header className="recipe-headers">
@@ -20,7 +22,9 @@ const RecipesCard = ({ recipe }) => {
       </Card.Header>
       <Card.Img variant="top" src={recipe.image} />
       <Card.Body>
-        <p>Add the {recipe.missedIngredientCount} missing ingredients to shopping list</p>
+        <p> You have <span className="ingred-count">{recipe.usedIngredientCount}</span> of the <span className="ingred-count">{recipe.usedIngredientCount + recipe.missedIngredientCount}</span> ingredients to make this recipe!</p>
+        <p>Select the missing <span className="ingred-count">{recipe.missedIngredientCount}</span> to add to your shopping list:</p>
+
         {recipe.missedIngredients.map((ingredient, index) => {
           return <ul className="recipe-ul" key={index}>
             <a className="missed-ingredients" href="#/" onClick={() => addToShoppingList(ingredient.name)}>{ingredient.name}</a>
