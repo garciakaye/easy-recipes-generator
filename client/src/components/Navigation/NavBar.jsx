@@ -47,7 +47,6 @@ const NavBar = () => {
             <Link to="/"><GiMeal /></Link>
             <Link className="link" to="/home">Easy Recipes Generator</Link>
             <Link className="link" to="/shopping-list">Shopping List</Link>
-            {/* <Link className="link" to="/" onClick={handleLogOut}>Logout</Link> */}
           </nav>
           <nav>
             <Dropdown>
