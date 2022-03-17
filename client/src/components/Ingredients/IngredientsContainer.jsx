@@ -45,7 +45,8 @@ const IngredientsContainer = () => {
         key={category}
         name={category}
         ingredients={categoryIngredients}
-      />)
+      />
+      )
     }
     return ingredientCards
   }
