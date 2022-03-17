@@ -1,4 +1,5 @@
-export const baseUrl = "http://localhost:3000";
+// export const baseUrl = "http://localhost:3000";
+export const baseUrl = "https://easy-recipes-generator.herokuapp.com/";
 export const headers = {
   "Accept": "application/json",
   "Content-Type": "application/json"
