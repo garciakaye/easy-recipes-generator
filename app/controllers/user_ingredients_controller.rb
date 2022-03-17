@@ -54,14 +54,9 @@ class UserIngredientsController < ApplicationController
       @user_ingredient = UserIngredient.find_by_id(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    # def user_ingredient_params
-    #   params.require(:user_ingredient).permit(:user_id, :ingredient_id)
-    # end
 
     def user_ingredient_params
       params.permit(:user_id, :ingredient_id, :user_ingredients, :ingredient)
     end
 end
 
-# params.permit(:user_id, :ingredient_id, :user_ingredients, :ingredient)
