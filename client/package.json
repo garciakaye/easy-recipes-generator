@@ -2,7 +2,7 @@
   "name": "easy-recipe-generator-app-client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3000",
+  "proxy": "https://easy-recipes-generator.herokuapp.com",
   "engines": {
     "node": "16.x"
   },
