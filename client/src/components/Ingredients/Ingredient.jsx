@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-// import { getUserIngredients } from "../../features/userSlice";
 import { baseUrl, headers } from "../../Globals";
 import { ingredientAdd, ingredientRemove } from "../../features/userSlice";
 
@@ -9,7 +8,6 @@ const Ingredient = ({ ingredient }) => {
   const myIngredients = useSelector((state) => state.user.ingredients);
   const user = useSelector((state) => state.user)
 
-  // 
   const initLoaded = useRef(false);
 
   const [findUserIngredient, setFindUserIngredient] = useState(myIngredients.find(myIngredient => {
