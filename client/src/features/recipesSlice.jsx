@@ -19,11 +19,6 @@ const recipesSlice = createSlice({
       state.status = "loading"
     },
   },
-  // extraReducers: (builder) => {
-  //   builder.addCase(fetchRecipeByIngredients.fulfilled, (state, action) => {
-
-  //   })
-  // }
 });
 
 
