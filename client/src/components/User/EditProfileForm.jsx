@@ -8,7 +8,6 @@ const EditProfileForm = () => {
   const [newUsername, setNewUsername] = useState(username);
 
   function handleSubmit() {
-    // e.preventDefault();
 
     fetch(`/users/${id}`, {
       method: "PATCH",
