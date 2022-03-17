@@ -6,13 +6,11 @@ import ReactPaginate from 'react-paginate';
 import CircularColor from "../Progress/CircularColor";
 
 
-
 const RecipesContainer = () => {
-
-  const itemsPerPage = 10;
 
   const myIngredients = useSelector((state) => state.user.ingredients);
 
+  const itemsPerPage = 10;
 
   const [recipeList, setRecipeList] = useState({});
 
@@ -21,7 +19,6 @@ const RecipesContainer = () => {
   const [itemOffset, setItemOffset] = useState(0);
 
   const [pageCount, setPageCount] = useState(0);
-
 
 
   useEffect(() => {
@@ -33,8 +30,8 @@ const RecipesContainer = () => {
     }
   }, [itemOffset, recipeList.results]);
 
-  useEffect(() => {
 
+  useEffect(() => {
     const userIngredientNamesArray = myIngredients.map(ingredient => ingredient.name)
     const getRecipes = async () => {
       const response = await fetch(apiUrlFindByIngredients + userIngredientNamesArray, {
