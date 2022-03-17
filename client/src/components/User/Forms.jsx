@@ -9,7 +9,6 @@ import FoodCarousel from "../LottieFiles/FoodCarousel";
 
 const Forms = () => {
 
-
   const [loginForm, setLoginForm] = useState(false)
 
   const handleFormToggle = () => setLoginForm(!loginForm)
