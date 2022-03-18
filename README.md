@@ -22,9 +22,10 @@ To use the application go to https://easy-recipes-generator.herokuapp.com/.
 
 
 ## Pantry
-https://user-images.githubusercontent.com/88004335/159045384-909271fb-455a-4637-ade9-ee7d15071c2d.mp4
+https://user-images.githubusercontent.com/88004335/159046346-b1aa6c6c-52ab-4e0a-b3b8-eab93d8e5bff.mp4
 
 ## Shopping List
+https://user-images.githubusercontent.com/88004335/159047072-412fdcbe-08ce-47fa-bcc3-57048027f240.mp4
 
 Users are also able to change their username and delete their account.
 
