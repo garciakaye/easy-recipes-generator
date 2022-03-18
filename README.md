@@ -20,6 +20,8 @@ To use the application go to https://easy-recipes-generator.herokuapp.com/.
 ## Login
 <img width="526" alt="Easy Recipes Generator 2022-03-18 11-35-47" src="https://user-images.githubusercontent.com/88004335/159044630-694bf36e-f0ad-4594-82dc-7ef14c1e5909.png">
 
+## Homepage
+<img width="1428" alt="homepage" src="https://user-images.githubusercontent.com/88004335/159047647-44c756b7-05db-44ee-85f3-33d7287b1226.png">
 
 ## Pantry
 https://user-images.githubusercontent.com/88004335/159046346-b1aa6c6c-52ab-4e0a-b3b8-eab93d8e5bff.mp4
