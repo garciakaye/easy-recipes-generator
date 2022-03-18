@@ -1,11 +1,27 @@
 # Easy Recipes Generator
-![Easy Recipes Generator 2022-03-18 11-06-31.png]
+
+
 
 ## Description
 
 Making your own meals at home is one of the best ways to save money, but it's not always easy to cook delicious meals. I often cook the same meals every week, which can get pretty boring, and I end up eating out and waste the food (and money) that I bought at the groceries. This is why I came up with the Easy Recipes Generator!
 
 With this app, users can save the ingredients they have at home and search through recipes based on the ingredients they already have. If they find a recipe they want to make, but missing a few more ingredients to make them, they'll be able to view a list of this missing ingredients and add them to a shopping list!
+
+
+# Usage
+To use the application go to https://easy-recipes-generator.herokuapp.com/.
+
+## Signup
+
+## Login
+
+## Pantry
+
+## Shopping List
+
+Users are also able to change their username and delete their account.
+
 
 ## Requirements
 
