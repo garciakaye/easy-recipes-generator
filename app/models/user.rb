@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_one :shopping_list 
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }, on: :create
-  validates :first_name, :last_name, presence: true, uniqueness: { case_sensitive: false }, on: :create
+  validates :first_name, :last_name, presence: true, on: :create
   
 
 end
