@@ -14,10 +14,15 @@ With this app, users can save the ingredients they have at home and search throu
 To use the application go to https://easy-recipes-generator.herokuapp.com/.
 
 ## Signup
+<img width="522" alt="Easy Recipes Generator 2022-03-18 11-34-51" src="https://user-images.githubusercontent.com/88004335/159044479-c42f5baa-2ef1-4078-ae20-b0e77a0b677b.png">
+
 
 ## Login
+<img width="526" alt="Easy Recipes Generator 2022-03-18 11-35-47" src="https://user-images.githubusercontent.com/88004335/159044630-694bf36e-f0ad-4594-82dc-7ef14c1e5909.png">
+
 
 ## Pantry
+https://user-images.githubusercontent.com/88004335/159045384-909271fb-455a-4637-ade9-ee7d15071c2d.mp4
 
 ## Shopping List
 
