@@ -8,14 +8,16 @@ const RecipesCard = ({ recipe }) => {
   const dispatch = useDispatch();
 
 
+
   const addToShoppingList = (ingredientName) => {
     dispatch(shoppingListAdd(ingredientName))
   }
 
 
 
+
   return (
-    <Card className="card-border" style={{ width: '23em' }} >
+    <Card className="card-border" style={{ width: '24em' }} >
       <Card.Header className="recipe-headers">
         {recipe.title}
         <a className="redirect-to-recipe" target="_blank" rel="noreferrer" href={recipe.sourceUrl}><CgExternal /></a>
@@ -26,9 +28,9 @@ const RecipesCard = ({ recipe }) => {
         <p>Select the missing <span className="ingred-count">{recipe.missedIngredientCount}</span> to add to your shopping list:</p>
 
         {recipe.missedIngredients.map((ingredient, index) => {
-          return <ul className="recipe-ul" key={index}>
+          return <Card.Text className="recipe-ul" key={index}>
             <a className="missed-ingredients" href="#/" onClick={() => addToShoppingList(ingredient.name)}>{ingredient.name}</a>
-          </ul>
+          </Card.Text>
         })}
       </Card.Body>
     </Card >
