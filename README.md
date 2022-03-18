@@ -1,5 +1,6 @@
 # Easy Recipes Generator
 
+<img width="1432" alt="Easy Recipes Generator 2022-03-18 11-06-31" src="https://user-images.githubusercontent.com/88004335/159044123-f171a682-da2f-4d8c-97bd-7c7cf2e9c75b.png">
 
 
 ## Description
