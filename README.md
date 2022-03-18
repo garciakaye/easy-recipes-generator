@@ -1,9 +1,11 @@
-# Project Template: React/Rails API
+# Easy Recipes Generator
+![Easy Recipes Generator 2022-03-18 11-06-31.png]
 
 ## Description
 
-This project is scaffolded so that you can build a React frontend and Rails
-backend together, and easily deploy them to Heroku.
+Making your own meals at home is one of the best ways to save money, but it's not always easy to cook delicious meals. I often cook the same meals every week, which can get pretty boring, and I end up eating out and waste the food (and money) that I bought at the groceries. This is why I came up with the Easy Recipes Generator!
+
+With this app, users can save the ingredients they have at home and search through recipes based on the ingredients they already have. If they find a recipe they want to make, but missing a few more ingredients to make them, they'll be able to view a list of this missing ingredients and add them to a shopping list!
 
 ## Requirements
 
