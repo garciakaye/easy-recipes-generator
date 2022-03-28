@@ -10,6 +10,7 @@ const Ingredient = ({ ingredient }) => {
 
   const initLoaded = useRef(false);
 
+
   const [findUserIngredient, setFindUserIngredient] = useState(myIngredients.find(myIngredient => {
     return myIngredient.id === ingredient.id;
   }));
